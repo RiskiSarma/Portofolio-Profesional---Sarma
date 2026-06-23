@@ -164,10 +164,10 @@
         </div>
       </div>
 
-      <!-- SKDB -->
+      <!-- SDKB -->
       <div class="project-card reveal">
         <div class="img-placeholder" style="padding:0;overflow:hidden">
-          <img src="assets/img/SKDB.jpeg" alt="SKDB" style="width:100%;height:100%;object-fit:contain;object-position:center;background:#0b0c10;display:block"/>
+          <img src="assets/img/SDKB.jpeg" alt="SDKB" style="width:100%;height:100%;object-fit:contain;object-position:center;background:#0b0c10;display:block"/>
         </div>
         <div class="p-6">
           <h3 class="font-display font-bold text-white text-lg mb-2">Sistem Deteksi Keterlambatan Belajar Siswa</h3>
@@ -281,11 +281,11 @@
             <p class="font-display font-semibold text-white text-sm">Seleksi & Kebutuhan Data</p>
           </div>
           <p class="text-xs leading-relaxed mb-3" style="color:#94a3b8">
-            <span style="color:#e2e8f0">SKDB:</span> Dataset Kaggle memiliki 20 kolom — dianalisis relevansinya terhadap kebutuhan guru, kemudian dipilih <span style="color:#00e5ff">10 kolom</span> yang sesuai dengan indikator penilaian: age, motorik kasar, motorik halus, komunikasi, ekspresif, menyimak, Kemampuan Pra Akademik, membaca, sosial skill, dan growth.<br/><br/>
+            <span style="color:#e2e8f0">SDKB:</span> Dataset Kaggle memiliki 20 kolom — dianalisis relevansinya terhadap kebutuhan guru, kemudian dipilih <span style="color:#00e5ff">10 kolom</span> yang sesuai dengan indikator penilaian: age, motorik kasar, motorik halus, komunikasi, ekspresif, menyimak, Kemampuan Pra Akademik, membaca, sosial skill, dan growth.<br/><br/>
             <span style="color:#e2e8f0">SI Pelatihan:</span> Google Form memiliki 15 kolom — dipilih <span style="color:#00e5ff">12 kolom</span> yang relevan untuk kebutuhan sistem pendataan peserta pelatihan.
           </p>
           <div class="flex gap-2 flex-wrap">
-            <span class="uk-badge" style="color:#00e5ff;border-color:rgba(0,229,255,.25);background:rgba(0,229,255,.06)">SKDB</span>
+            <span class="uk-badge" style="color:#00e5ff;border-color:rgba(0,229,255,.25);background:rgba(0,229,255,.06)">SDKB</span>
             <span class="uk-badge" style="color:#7c3aed;border-color:rgba(124,58,237,.25);background:rgba(124,58,237,.06)">SI Pelatihan</span>
           </div>
         </div>
@@ -298,11 +298,11 @@
             <p class="font-display font-semibold text-white text-sm">Pengumpulan Data</p>
           </div>
           <p class="text-xs leading-relaxed mb-3" style="color:#94a3b8">
-            <span style="color:#e2e8f0">SKDB:</span> Dataset dikumpulkan dari Kaggle sebanyak <span style="color:#00e5ff">80.000 data</span>. Data testing dikumpulkan dari <span style="color:#00e5ff">observasi langsung guru</span> di lapangan — guru menginput hasil penilaian siswa ke sistem secara real-time.<br/><br/>
+            <span style="color:#e2e8f0">SDKB:</span> Dataset dikumpulkan dari Kaggle sebanyak <span style="color:#00e5ff">80.000 data</span>. Data testing dikumpulkan dari <span style="color:#00e5ff">observasi langsung guru</span> di lapangan — guru menginput hasil penilaian siswa ke sistem secara real-time.<br/><br/>
             <span style="color:#e2e8f0">SI Pelatihan:</span> Data peserta dikumpulkan melalui Google Form kemudian diproses untuk diimport ke dalam sistem.
           </p>
           <div class="flex gap-2 flex-wrap">
-            <span class="uk-badge" style="color:#00e5ff;border-color:rgba(0,229,255,.25);background:rgba(0,229,255,.06)">SKDB</span>
+            <span class="uk-badge" style="color:#00e5ff;border-color:rgba(0,229,255,.25);background:rgba(0,229,255,.06)">SDKB</span>
             <span class="uk-badge" style="color:#7c3aed;border-color:rgba(124,58,237,.25);background:rgba(124,58,237,.06)">SI Pelatihan</span>
           </div>
         </div>
@@ -315,11 +315,11 @@
             <p class="font-display font-semibold text-white text-sm">Integrasi & Pembersihan Data</p>
           </div>
           <p class="text-xs leading-relaxed mb-3" style="color:#94a3b8">
-            <span style="color:#e2e8f0">SKDB:</span> Dataset Kaggle diintegrasikan dengan standar penilaian guru. Preprocessing meliputi normalisasi nilai, penanganan missing value, lalu data dibagi menjadi <span style="color:#00e5ff">data training & data testing</span>.<br/><br/>
+            <span style="color:#e2e8f0">SDKB:</span> Dataset Kaggle diintegrasikan dengan standar penilaian guru. Preprocessing meliputi normalisasi nilai, penanganan missing value, lalu data dibagi menjadi <span style="color:#00e5ff">data training & data testing</span>.<br/><br/>
             <span style="color:#e2e8f0">SI Pelatihan:</span> Nama kolom hasil Google Form disesuaikan melalui query SQL agar sesuai dengan struktur kolom tabel database sebelum proses import — cleaning data nyata di lingkungan produksi.
           </p>
           <div class="flex gap-2 flex-wrap">
-            <span class="uk-badge" style="color:#00e5ff;border-color:rgba(0,229,255,.25);background:rgba(0,229,255,.06)">SKDB</span>
+            <span class="uk-badge" style="color:#00e5ff;border-color:rgba(0,229,255,.25);background:rgba(0,229,255,.06)">SDKB</span>
             <span class="uk-badge" style="color:#7c3aed;border-color:rgba(124,58,237,.25);background:rgba(124,58,237,.06)">SI Pelatihan</span>
           </div>
         </div>
@@ -332,10 +332,10 @@
             <p class="font-display font-semibold text-white text-sm">Klasifikasi & Validasi Model</p>
           </div>
           <p class="text-xs leading-relaxed mb-3" style="color:#94a3b8">
-            <span style="color:#e2e8f0">SKDB:</span> Data training digunakan untuk melatih model <span style="color:#00e5ff">Decision Tree CART</span>. Data testing dari observasi guru digunakan untuk menguji model — sistem otomatis mengklasifikasikan tingkat keterlambatan siswa: <span style="color:#00e5ff">Normal / Ringan / Sedang / Berat</span> pada 3 aspek: motorik, kognitif, dan bahasa.
+            <span style="color:#e2e8f0">SDKB:</span> Data training digunakan untuk melatih model <span style="color:#00e5ff">Decision Tree CART</span>. Data testing dari observasi guru digunakan untuk menguji model — sistem otomatis mengklasifikasikan tingkat keterlambatan siswa: <span style="color:#00e5ff">Normal / Ringan / Sedang / Berat</span> pada 3 aspek: motorik, kognitif, dan bahasa.
           </p>
           <div class="flex gap-2 flex-wrap">
-            <span class="uk-badge" style="color:#00e5ff;border-color:rgba(0,229,255,.25);background:rgba(0,229,255,.06)">SKDB</span>
+            <span class="uk-badge" style="color:#00e5ff;border-color:rgba(0,229,255,.25);background:rgba(0,229,255,.06)">SDKB</span>
           </div>
         </div>
 
@@ -347,11 +347,11 @@
             <p class="font-display font-semibold text-white text-sm">Visualisasi Data & Dashboard</p>
           </div>
           <p class="text-xs leading-relaxed mb-3" style="color:#94a3b8">
-            <span style="color:#e2e8f0">SKDB:</span> Hasil klasifikasi ditampilkan di dashboard sistem — guru dapat langsung melihat siswa mana yang terdeteksi mengalami keterlambatan beserta aspeknya sebagai dasar tindakan intervensi yang tepat.<br/><br/>
+            <span style="color:#e2e8f0">SDKB:</span> Hasil klasifikasi ditampilkan di dashboard sistem — guru dapat langsung melihat siswa mana yang terdeteksi mengalami keterlambatan beserta aspeknya sebagai dasar tindakan intervensi yang tepat.<br/><br/>
             <span style="color:#e2e8f0">DeCafe:</span> Data transaksi penjualan divisualisasikan dalam <span style="color:#00e5ff">bar chart interaktif</span> — menampilkan porsi penjualan per menu sehingga pemilik cafe dapat mengidentifikasi produk terlaris dan mengambil keputusan bisnis berbasis data.
           </p>
           <div class="flex gap-2 flex-wrap">
-            <span class="uk-badge" style="color:#00e5ff;border-color:rgba(0,229,255,.25);background:rgba(0,229,255,.06)">SKDB</span>
+            <span class="uk-badge" style="color:#00e5ff;border-color:rgba(0,229,255,.25);background:rgba(0,229,255,.06)">SDKB</span>
             <span class="uk-badge" style="color:#7c3aed;border-color:rgba(124,58,237,.25);background:rgba(124,58,237,.06)">DeCafe</span>
           </div>
         </div>
@@ -362,11 +362,11 @@
     <!-- PROJECT DETAIL CARDS -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-      <!-- SKDB Detail -->
+      <!-- SDKB Detail -->
       <div class="project-card reveal md:col-span-2">
         <div class="flex flex-col lg:flex-row">
           <div style="overflow:hidden;min-height:220px" class="lg:w-1/2">
-            <img src="assets/img/dataset skdb.png" alt="SKDB Dataset" style="width:100%;height:100%;object-fit:contain;object-position:center;background:#0b0c10;display:block"/>
+            <img src="assets/img/dataset SDKB.png" alt="SDKB Dataset" style="width:100%;height:100%;object-fit:contain;object-position:center;background:#0b0c10;display:block"/>
           </div>
           <div class="p-7 lg:w-1/2 flex flex-col justify-between">
             <div>
