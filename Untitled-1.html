@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rizki Saputra Sarma — Portfolio</title>
+  <meta name="description" content="Portfolio Rizki Saputra Sarma — Fullstack Developer & Web Developer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'>
+    <rect width='32' height='32' rx='8' fill='%230b0c10'/><text x='5' y='23' font-family='Georgia,serif' font-weight='bold' font-size='18' fill='%23ffffff'>rs</text>
+    <circle cx='27' cy='20' r='3' fill='%2300e5ff'/></svg>">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            mono: ['DM Mono', 'monospace'],
+            body: ['Manrope', 'sans-serif'],
+          },
+          colors: {
+            ink: '#0b0c10',
+            surface: '#12141a',
+            card: '#181b24',
+            border: '#232737',
+            accent: '#00e5ff',
+            accent2: '#7c3aed',
+            muted: '#6b7280',
+            light: '#e2e8f0',
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.7s ease forwards',
+            'blink': 'blink 1.1s step-end infinite',
+            'float': 'float 5s ease-in-out infinite',
+            'glow': 'glow 2.5s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(28px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            blink: {
+              '0%, 100%': { opacity: '1' },
+              '50%': { opacity: '0' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            glow: {
+              '0%': { boxShadow: '0 0 10px rgba(0,229,255,0.1), 0 0 20px rgba(0,229,255,0.05)' },
+              '100%': { boxShadow: '0 0 20px rgba(0,229,255,0.25), 0 0 40px rgba(0,229,255,0.1)' },
+            },
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: #0b0c10;
+      color: #e2e8f0;
+      font-family: 'Manrope', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── Keyframes (must be here — Tailwind CDN doesn't inject custom keyframes) ── */
+    @keyframes fadeUp {
+      0%   { opacity: 0; transform: translateY(28px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-10px); }
+    }
+    @keyframes glow {
+      0%   { box-shadow: 0 0 10px rgba(0,229,255,0.1), 0 0 20px rgba(0,229,255,0.05); }
+      100% { box-shadow: 0 0 20px rgba(0,229,255,0.25), 0 0 40px rgba(0,229,255,0.1); }
+    }
+
+    /* Noise texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* Gradient mesh background */
+    .mesh-bg {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(0, 229, 255, 0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(124, 58, 237, 0.07) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(0, 229, 255, 0.02) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #0b0c10; }
+    ::-webkit-scrollbar-thumb { background: #232737; border-radius: 2px; }
+    ::-webkit-scrollbar-thumb:hover { background: #00e5ff; }
+
+    /* Glow line */
+    .glow-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #00e5ff, transparent);
+    }
+
+    /* Accent badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 229, 255, 0.08);
+      border: 1px solid rgba(0, 229, 255, 0.18);
+      color: #00e5ff;
+      border-radius: 9999px;
+      padding: 4px 14px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Tech tag */
+    .tech-tag {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #94a3b8;
+      border-radius: 6px;
+      padding: 3px 10px;
+      font-size: 0.72rem;
+      font-family: 'DM Mono', monospace;
+      transition: all 0.2s ease;
+    }
+    .tech-tag:hover {
+      background: rgba(0, 229, 255, 0.06);
+      border-color: rgba(0, 229, 255, 0.2);
+      color: #00e5ff;
+    }
+
+    /* Project card */
+    .project-card {
+      background: #181b24;
+      border: 1px solid #232737;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0, 229, 255, 0.25);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 229, 255, 0.08);
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,229,255,0.3), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .project-card:hover::before { opacity: 1; }
+
+    /* Image placeholder */
+    .img-placeholder {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, #12141a 0%, #1a1d27 50%, #12141a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .img-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 20px,
+        rgba(255,255,255,0.01) 20px,
+        rgba(255,255,255,0.01) 21px
+      );
+    }
+
+    /* Nav link */
+    .nav-link {
+      color: #6b7280;
+      font-size: 0.82rem;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0; right: 0;
+      height: 1px;
+      background: #00e5ff;
+      transform: scaleX(0);
+      transition: transform 0.25s ease;
+    }
+    .nav-link:hover { color: #00e5ff; }
+    .nav-link:hover::after { transform: scaleX(1); }
+
+    /* Reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hero number */
+    .hero-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: #00e5ff;
+      letter-spacing: 0.1em;
+    }
+
+    /* Cursor blink */
+    .cursor::after {
+      content: '|';
+      animation: blink 1.1s step-end infinite;
+      color: #00e5ff;
+    }
+
+    /* Featured badge on card */
+    .featured-dot {
+      width: 6px; height: 6px;
+      background: #00e5ff;
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 6px #00e5ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="mesh-bg"></div>
+
+  <!-- ──────────── NAVBAR ──────────── -->
+  <nav class="fixed top-0 left-0 right-0 z-50" style="background: rgba(11,12,16,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(35,39,55,0.6);">
+    <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+      <span class="font-display font-bold text-white text-sm tracking-wide">
+        rss<span style="color:#00e5ff">.</span>dev
+      </span>
+      <div class="flex items-center gap-8">
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#data-analyst" class="nav-link">Data Analyst</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ──────────── HERO ──────────── -->
+  <section class="relative min-h-screen flex items-center justify-center px-6 pt-14" style="z-index: 1;">
+    <div class="max-w-3xl w-full mx-auto text-center">
+
+      <!-- Status badge -->
+      <div class="flex justify-center mb-8" style="animation: fadeUp 0.6s ease 0.1s forwards; opacity: 0;">
+        <div class="badge">
+          <span class="featured-dot"></span>
+          Available for opportunities
+        </div>
+      </div>
+
+      <!-- Name -->
+      <h1 class="font-display font-extrabold leading-none mb-4 text-white"
+          style="font-size: clamp(2.8rem, 8vw, 5.5rem); letter-spacing: -0.03em; animation: fadeUp 0.7s ease 0.2s forwards; opacity: 0;">
+        Rizki Saputra<br/>
+        <span style="
+          background: linear-gradient(135deg, #00e5ff 0%, #7c3aed 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        ">Sarma</span>
+      </h1>
+
+      <!-- Role — typewriter -->
+      <p class="font-mono text-lg mb-6" style="color: #00e5ff; animation: fadeUp 0.7s ease 0.35s forwards; opacity: 0; min-height: 1.8rem;">
+        <span id="typewriter"></span><span id="tw-cursor" style="display:inline-block; width:2px; height:1.1em; background:#00e5ff; margin-left:3px; vertical-align:middle; animation:blink 1s step-end infinite;"></span>
+      </p>
+
+      <!-- Bio -->
+      <p class="text-base leading-relaxed max-w-xl mx-auto mb-10"
+         style="color: #94a3b8; animation: fadeUp 0.7s ease 0.45s forwards; opacity: 0;">
+        Lulusan D-IV Teknik Informatika Politeknik Negeri Lhokseumawe. Berpengalaman membangun aplikasi web
+        dengan <span style="color:#e2e8f0">PHP, Laravel, JavaScript</span>, dan
+        <span style="color:#e2e8f0">MySQL</span>. Siap berkolaborasi dan terus belajar.
+      </p>
+
+      <!-- CTA buttons -->
+      <div class="flex items-center justify-center gap-4 flex-wrap"
+           style="animation: fadeUp 0.7s ease 0.55s forwards; opacity: 0;">
+        <a href="#projects"
+           class="flex items-center gap-2 px-6 py-3 rounded-xl font-display font-semibold text-sm transition-all duration-300"
+           style="background: #00e5ff; color: #0b0c10; box-shadow: 0 4px 24px rgba(0,229,255,0.25);"
+           onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 32px rgba(0,229,255,0.4)'"
+           onmouseout="this.style.transform=''; this.style.boxShadow='0 4px 24px rgba(0,229,255,0.25)'">
+          Lihat Projek
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </a>
+        <a href="#contact"
+           class="flex items-center gap-2 px-6 py-3 rounded-xl font-display font-semibold text-sm transition-all duration-300"
+           style="border: 1px solid #232737; color: #e2e8f0; background: transparent;"
+           onmouseover="this.style.borderColor='rgba(0,229,255,0.35)'; this.style.color='#00e5ff'"
+           onmouseout="this.style.borderColor='#232737'; this.style.color='#e2e8f0'">
+          Kontak Saya
+        </a>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-float opacity-50">
+        <span class="font-mono text-xs" style="color:#6b7280">scroll</span>
+        <svg width="16" height="20" viewBox="0 0 16 24" fill="none" stroke="#6b7280" stroke-width="1.5">
+          <rect x="1" y="1" width="14" height="22" rx="7"/>
+          <line x1="8" y1="6" x2="8" y2="10" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────── PROJECTS ──────────── -->
+  <section id="projects" class="relative py-24 px-6" style="z-index:1;">
+    <div class="max-w-5xl mx-auto">
+
+      <!-- Section header -->
+      <div class="flex items-end justify-between mb-16 reveal">
+        <div>
+          <span class="hero-num">/ 01</span>
+          <h2 class="font-display font-bold text-white mt-1" style="font-size: clamp(2rem, 5vw, 3rem); letter-spacing:-0.02em;">
+            Projek
+          </h2>
+          <p style="color:#6b7280; font-size:0.9rem; margin-top:6px;">Kumpulan sistem & aplikasi yang pernah dibangun</p>
+        </div>
+        <div class="hidden sm:block glow-line" style="width: 200px; margin-bottom: 28px;"></div>
+      </div>
+
+      <!-- Projects grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- ── Project 1: DeCafe ── -->
+        <div class="project-card reveal md:col-span-2">
+          <div class="flex flex-col lg:flex-row">
+            <!-- Image area -->
+            <div class="lg:w-1/2" style="min-height: 240px; overflow:hidden;">
+              <img src="assets/img/DeCafe.png" alt="Aplikasi Kasir DeCafe"
+                   style="width:100%; height:100%; object-fit:cover; object-position:top; display:block;" />
+            </div>
+            <!-- Content -->
+            <div class="p-7 lg:w-1/2 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="featured-dot"></span>
+                  <span class="font-mono text-xs" style="color:#00e5ff;">Featured Project</span>
+                </div>
+                <h3 class="font-display font-bold text-white text-xl mb-3">Aplikasi Kasir Berbasis Web<br/>
+                  <span style="color:#00e5ff;">DeCafe</span>
+                </h3>
+                <p class="text-sm leading-relaxed mb-5" style="color:#94a3b8;">
+                  Sistem point-of-sale (POS) berbasis web untuk manajemen transaksi kedai kopi.
+                  Mencakup fitur manajemen menu, pencatatan pesanan, laporan penjualan harian,
+                  dan rekap transaksi secara real-time.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="tech-tag">PHP</span>
+                    <span class="tech-tag">HTML</span>
+                    <span class="tech-tag">CSS</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">MySQL</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Bootstrap</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 mt-6">
+                <!-- Uncomment & isi URL jika ada -->
+                <!-- <a href="#" class="flex items-center gap-1.5 text-xs font-mono transition-colors hover:text-accent" style="color:#6b7280">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.1.83-.26.83-.57v-2c-3.34.73-4.04-1.6-4.04-1.6-.55-1.38-1.33-1.75-1.33-1.75-1.08-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.06 1.82 2.8 1.29 3.48.98.1-.77.41-1.29.75-1.59-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.68.83.57C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                  GitHub
+                </a> -->
+                <!-- <a href="#" class="flex items-center gap-1.5 text-xs font-mono transition-colors hover:text-accent" style="color:#6b7280">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  Live Demo
+                </a> -->
+                <span class="font-mono text-xs" style="color:#3d4451; font-style: italic;">Akademik · 2024</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Project 2: Kartu Ujian ── -->
+        <div class="project-card reveal">
+          <!-- Image -->
+          <div class="img-placeholder" style="padding:0; overflow:hidden;">
+            <img src="assets/img/kartu_ujian.png" alt="Aplikasi Kartu Ujian"
+                 style="width:100%; height:100%; object-fit:cover; object-position:top; display:block;" />
+          </div>
+          <!-- Content -->
+          <div class="p-6">
+            <h3 class="font-display font-bold text-white text-lg mb-2">
+              Aplikasi Kartu Ujian Berbasis Web
+            <p class="text-sm leading-relaxed mb-4" style="color:#94a3b8;">
+              Sistem pembuatan dan pengelolaan kartu ujian mahasiswa/siswa secara digital.
+              Otomatisasi generate kartu ujian berdasarkan data peserta, menggantikan proses manual yang memakan waktu.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="tech-tag">PHP</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">HTML/CSS</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+            <span class="font-mono text-xs" style="color:#3d4451; font-style:italic;">Akademik · 2023</span>
+          </div>
+        </div>
+
+        <!-- ── Project 3: Koperasi Syariah ── -->
+        <div class="project-card reveal" style="transition-delay: 0.1s">
+          <!-- Image -->
+          <div class="img-placeholder" style="padding:0; overflow:hidden;">
+            <img src="assets/img/web koperasi.jpeg" alt="Sistem Koperasi Syariah"
+                 style="width:100%; height:100%; object-fit:cover; object-position:top; display:block;" />
+          </div>
+          <!-- Content -->
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-2">
+              <div style="width:6px;height:6px;background:#7c3aed;border-radius:50%;box-shadow:0 0 6px #7c3aed;"></div>
+              <span class="font-mono text-xs" style="color:#7c3aed;">Internship Project</span>
+            </div>
+            <h3 class="font-display font-bold text-white text-lg mb-2">
+              Sistem Koperasi Syariah Karyawan
+            </h3>
+            <p class="text-sm leading-relaxed mb-4" style="color:#94a3b8;">
+              Aplikasi manajemen koperasi syariah berbasis web untuk karyawan BPR Syariah Hikmah Wakilah.
+              Fitur meliputi pengelolaan simpan-pinjam, laporan keuangan, dan data anggota.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="tech-tag">PHP</span>
+              <span class="tech-tag">HTML</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">Bootstrap</span>
+            </div>
+            <span class="font-mono text-xs" style="color:#3d4451; font-style:italic;">Magang BPR Syariah Hikmah Wakilah · 2024</span>
+          </div>
+        </div>
+
+        <!-- ── Project 4: Deteksi Keterlambatan ── -->
+        <div class="project-card reveal">
+          <!-- Image -->
+          <div class="img-placeholder" style="padding:0; overflow:hidden;">
+            <img src="assets/img/SKDB.jpeg" alt="Sistem Deteksi Keterlambatan Belajar"
+                 style="width:100%; height:100%; object-fit:cover; object-position:top; display:block;" />
+          </div>
+          <!-- Content -->
+          <div class="p-6">
+            <h3 class="font-display font-bold text-white text-lg mb-2">
+              Sistem Deteksi Keterlambatan Belajar Siswa
+            </h3>
+            <p class="text-sm leading-relaxed mb-4" style="color:#94a3b8;">
+              Sistem informasi berbasis web untuk mendeteksi dan memonitor keterlambatan belajar pada siswa.
+              Membantu guru mengidentifikasi siswa yang butuh perhatian lebih secara cepat dan akurat.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="tech-tag">PHP</span>
+              <span class="tech-tag">HTML</span>
+              <span class="tech-tag">Bootstrap5</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">CSS</span>
+            </div>
+            <span class="font-mono text-xs" style="color:#3d4451; font-style:italic;">Akademik · 2023–2024</span>
+          </div>
+        </div>
+
+        <!-- ── Project 5: Sistem Informasi Pelatihan ── -->
+        <div class="project-card reveal" style="transition-delay: 0.1s">
+          <!-- Image -->
+          <div class="img-placeholder" style="padding:0; overflow:hidden;">
+            <img src="assets/img/SI_pelatihan.png" alt="Sistem Informasi Pelatihan"
+                 style="width:100%; height:100%; object-fit:cover; object-position:top; display:block;" />
+          </div>
+          <!-- Content -->
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-2">
+              <div style="width:6px;height:6px;background:#7c3aed;border-radius:50%;box-shadow:0 0 6px #7c3aed;"></div>
+              <span class="font-mono text-xs" style="color:#7c3aed;">Internship Project</span>
+            </div>
+            <h3 class="font-display font-bold text-white text-lg mb-2">
+              Sistem Informasi Pelatihan
+            </h3>
+            <p class="text-sm leading-relaxed mb-4" style="color:#94a3b8;">
+              Platform manajemen informasi pelatihan di BPVP Banda Aceh. Mengelola data peserta,
+              jadwal program pelatihan, instruktur, dan laporan progress pelatihan secara terpusat.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="tech-tag">PHP</span>
+              <span class="tech-tag">HTML</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">Laravel</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">Tailwind CSS</span>
+              <span class="tech-tag">Bootstrap</span>
+              <span class="tech-tag">REST API</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+            <span class="font-mono text-xs" style="color:#3d4451; font-style:italic;">MagangHub Kemnaker · 2025–2026</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────── SKILLS ──────────── -->
+  <section id="skills" class="relative py-24 px-6" style="z-index:1;">
+    <div class="max-w-5xl mx-auto">
+      <div class="flex items-end justify-between mb-14 reveal">
+        <div>
+          <span class="hero-num">/ 02</span>
+          <h2 class="font-display font-bold text-white mt-1" style="font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing:-0.02em;">
+            Tech Stack
+          </h2>
+        </div>
+        <div class="hidden sm:block glow-line" style="width: 200px; margin-bottom: 24px;"></div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 reveal">
+
+        <!-- Web Dev -->
+        <div class="p-5 rounded-xl" style="background:#181b24; border:1px solid #232737;">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(0,229,255,0.08); border:1px solid rgba(0,229,255,0.15);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2"><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></svg>
+            </div>
+            <span class="font-display font-semibold text-sm text-white">Web Development</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-tag">PHP</span>
+            <span class="tech-tag">Laravel</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Bootstrap</span>
+            <span class="tech-tag">Tailwind CSS</span>
+          </div>
+        </div>
+
+        <!-- Database -->
+        <div class="p-5 rounded-xl" style="background:#181b24; border:1px solid #232737;">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(124,58,237,0.08); border:1px solid rgba(124,58,237,0.15);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            </div>
+            <span class="font-display font-semibold text-sm text-white">Database</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">HeidiSQL</span>
+            <span class="tech-tag">PostgreSQL</span>
+          </div>
+        </div>
+
+        <!-- IT Support -->
+        <div class="p-5 rounded-xl" style="background:#181b24; border:1px solid #232737;">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(0,229,255,0.08); border:1px solid rgba(0,229,255,0.15);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <span class="font-display font-semibold text-sm text-white">IT Support</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-tag">Windows</span>
+            <span class="tech-tag">Linux</span>
+            <span class="tech-tag">Troubleshooting</span>
+            <span class="tech-tag">Networking</span>
+          </div>
+        </div>
+
+        <!-- Tools -->
+        <div class="p-5 rounded-xl" style="background:#181b24; border:1px solid #232737;">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(124,58,237,0.08); border:1px solid rgba(124,58,237,0.15);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg>
+            </div>
+            <span class="font-display font-semibold text-sm text-white">Tools & Otomasi</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-tag">n8n</span>
+            <span class="tech-tag">Git</span>
+            <span class="tech-tag">VS Code</span>
+            <span class="tech-tag">Laragon</span>
+            <span class="tech-tag">Docker</span>
+            <span class="tech-tag">Postman</span>
+            <span class="tech-tag">MS Office</span>
+            <span class="tech-tag">Canva</span>
+            <span class="tech-tag">Figma</span>
+          </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="p-5 rounded-xl sm:col-span-2 lg:col-span-2" style="background:#181b24; border:1px solid #232737;">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(0,229,255,0.08); border:1px solid rgba(0,229,255,0.15);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+            </div>
+            <span class="font-display font-semibold text-sm text-white">Sertifikasi</span>
+          </div>
+          <div class="space-y-2">
+            <div class="flex items-center justify-between py-2 px-3 rounded-lg" style="background:rgba(255,255,255,0.02);">
+              <span class="text-sm" style="color:#e2e8f0;">Web Developer — BNSP</span>
+              <span class="font-mono text-xs" style="color:#6b7280;">Oktober 2025 – 2028</span>
+            </div>
+            <div class="flex items-center justify-between py-2 px-3 rounded-lg" style="background:rgba(255,255,255,0.02);">
+              <span class="text-sm" style="color:#e2e8f0;">Fullstack Developer — MagangHub Kemnaker</span>
+              <span class="font-mono text-xs" style="color:#6b7280;">Juni 2026</span>
+            </div>
+            <div class="flex items-center justify-between py-2 px-3 rounded-lg" style="background:rgba(255,255,255,0.02);">
+              <span class="text-sm" style="color:#e2e8f0;">Backend Development — MySkill</span>
+              <span class="font-mono text-xs" style="color:#6b7280;">Maret 2026</span>
+            </div>
+            <div class="flex items-center justify-between py-2 px-3 rounded-lg" style="background:rgba(255,255,255,0.02);">
+              <span class="text-sm" style="color:#e2e8f0;">AI & Automation with n8n — MySkill</span>
+              <span class="font-mono text-xs" style="color:#6b7280;">Maret 2026</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────── DATA ANALYST ──────────── -->
+  <section id="data-analyst" class="relative py-24 px-6" style="z-index:1;">
+    <div class="max-w-5xl mx-auto">
+
+      <!-- Section header -->
+      <div class="flex items-end justify-between mb-16 reveal">
+        <div>
+          <span class="hero-num">/ 03</span>
+          <h2 class="font-display font-bold text-white mt-1" style="font-size: clamp(2rem, 5vw, 3rem); letter-spacing:-0.02em;">
+            Data Analyst
+          </h2>
+          <p style="color:#6b7280; font-size:0.9rem; margin-top:6px;">Penerapan analisis data pada sistem nyata yang telah dibangun</p>
+        </div>
+        <div class="hidden sm:block glow-line" style="width: 200px; margin-bottom: 28px;"></div>
+      </div>
+
+      <!-- Intro -->
+      <div class="reveal mb-12 p-6 rounded-2xl flex flex-col sm:flex-row items-start gap-5"
+           style="background: linear-gradient(135deg, rgba(0,229,255,0.05) 0%, rgba(124,58,237,0.07) 100%); border:1px solid rgba(0,229,255,0.15);">
+        <div class="w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center" style="background:rgba(0,229,255,0.1); border:1px solid rgba(0,229,255,0.2);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="1.8">
+            <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/>
+            <line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/>
+          </svg>
+        </div>
+        <div>
+          <p class="font-display font-semibold text-white mb-1">Analisis Data Terintegrasi dalam Sistem Nyata</p>
+          <p class="text-sm leading-relaxed" style="color:#94a3b8;">
+            Setiap sistem yang dibangun tidak hanya berfungsi sebagai aplikasi web, tetapi juga mengolah,
+            memproses, dan menyajikan data secara analitis. Mulai dari deteksi pola, laporan keuangan,
+            monitoring performa, hingga dashboard pengambilan keputusan — semuanya mengandung elemen data analyst
+            yang diterapkan langsung pada kasus nyata.
+          </p>
+        </div>
+        <div class="flex-shrink-0">
+          <span style="background:rgba(0,229,255,0.08); border:1px solid rgba(0,229,255,0.25); color:#00e5ff; border-radius:9999px; padding:4px 14px; font-family:'DM Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap;">
+            ● BNSP Data Analyst
+          </span>
+        </div>
+      </div>
+
+      <!-- Project-based analyst cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- 1. Deteksi Keterlambatan -->
+        <div class="project-card reveal md:col-span-2">
+          <div class="flex flex-col lg:flex-row">
+            <div style="overflow:hidden; min-height:220px;" class="lg:w-1/2">
+              <img src="assets/img/SKDB.jpeg" alt="Sistem Deteksi Keterlambatan Belajar"
+                   style="width:100%; height:100%; object-fit:cover; object-position:top; display:block;" />
+            </div>
+            <div class="p-7 lg:w-1/2 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="featured-dot"></span>
+                  <span class="font-mono text-xs" style="color:#00e5ff;">Data Analysis · Deteksi Pola</span>
+                </div>
+                <h3 class="font-display font-bold text-white text-xl mb-3">
+                  Sistem Deteksi Keterlambatan Belajar Siswa
+                </h3>
+                <p class="text-sm leading-relaxed mb-4" style="color:#94a3b8;">
+                  Sistem ini menganalisis data presensi dan nilai siswa untuk mendeteksi pola keterlambatan belajar.
+                  Data diolah menggunakan logika berbasis threshold dan disajikan dalam bentuk laporan visual
+                  yang membantu guru mengambil tindakan yang tepat.
+                </p>
+                <!-- Analyst highlights -->
+                <div class="space-y-2 mb-5">
+                  <div class="flex items-start gap-2">
+                    <svg class="flex-shrink-0 mt-0.5" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg>
+                    <span class="text-xs" style="color:#94a3b8;">Pengumpulan & pembersihan data presensi dan nilai siswa</span>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <svg class="flex-shrink-0 mt-0.5" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg>
+                    <span class="text-xs" style="color:#94a3b8;">Analisis pola keterlambatan menggunakan statistik deskriptif</span>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <svg class="flex-shrink-0 mt-0.5" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg>
+                    <span class="text-xs" style="color:#94a3b8;">Visualisasi laporan progress belajar per siswa & per kelas</span>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <svg class="flex-shrink-0 mt-0.5" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg>
+                    <span class="text-xs" style="color:#94a3b8;">Sistem peringatan otomatis berbasis insight data</span>
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                  <span class="tech-tag">Data Analysis</span>
+                  <span class="tech-tag">MySQL</span>
+                  <span class="tech-tag">Statistical Reporting</span>
+                  <span class="tech-tag">Pattern Detection</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Koperasi Syariah -->
+        <div class="project-card reveal">
+          <div class="img-placeholder" style="padding:0; overflow:hidden;">
+            <img src="assets/img/web koperasi.jpeg" alt="Sistem Koperasi Syariah"
+                 style="width:100%; height:100%; object-fit:cover; object-position:top; display:block;" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-2">
+              <div style="width:6px;height:6px;background:#7c3aed;border-radius:50%;box-shadow:0 0 6px #7c3aed;"></div>
+              <span class="font-mono text-xs" style="color:#7c3aed;">Data Analysis · Keuangan</span>
+            </div>
+            <h3 class="font-display font-bold text-white text-lg mb-2">Sistem Koperasi Syariah Karyawan</h3>
+            <p class="text-sm leading-relaxed mb-3" style="color:#94a3b8;">
+              Pengelolaan dan analisis data keuangan koperasi secara real-time. Sistem menghitung bagi hasil,
+              merekap transaksi simpan-pinjam, dan menghasilkan laporan keuangan yang akurat sebagai dasar keputusan pengurus.
+            </p>
+            <div class="space-y-1.5 mb-4">
+              <div class="flex items-start gap-2">
+                <svg class="flex-shrink-0 mt-0.5" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg>
+                <span class="text-xs" style="color:#94a3b8;">Analisis arus kas & laporan keuangan bulanan</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <svg class="flex-shrink-0 mt-0.5" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg>
+                <span class="text-xs" style="color:#94a3b8;">Kalkulasi bagi hasil otomatis berbasis data transaksi</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <svg class="flex-shrink-0 mt-0.5" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg>
+                <span class="text-xs" style="color:#94a3b8;">Dashboard analitik data anggota & simpanan</span>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-tag">Financial Analysis</span>
+              <span class="tech-tag">SQL Query</span>
+              <span class="tech-tag">Dashboard</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. SI Pelatihan -->
+        <div class="project-card reveal" style="transition-delay:0.1s">
+          <div class="img-placeholder" style="padding:0; overflow:hidden;">
+            <img src="assets/img/SI_pelatihan.png" alt="Sistem Informasi Pelatihan"
+                 style="width:100%; height:100%; object-fit:cover; object-position:top; display:block;" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-2">
+              <div style="width:6px;height:6px;background:#00e5ff;border-radius:50%;box-shadow:0 0 6px #00e5ff;"></div>
+              <span class="font-mono text-xs" style="color:#00e5ff;">Data Analysis · Monitoring</span>
+            </div>
+            <h3 class="font-display font-bold text-white text-lg mb-2">Sistem Informasi Pelatihan</h3>
+            <p class="text-sm leading-relaxed mb-3" style="color:#94a3b8;">
+              Sistem ini merekam dan menganalisis data peserta, kehadiran, dan progress pelatihan.
+              Laporan yang dihasilkan membantu manajemen BPVP mengevaluasi efektivitas program pelatihan
+              berdasarkan data nyata.
+            </p>
+            <div class="space-y-1.5 mb-4">
+              <div class="flex items-start gap-2">
+                <svg class="flex-shrink-0 mt-0.5" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg>
+                <span class="text-xs" style="color:#94a3b8;">Monitoring data kehadiran & progress peserta pelatihan</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <svg class="flex-shrink-0 mt-0.5" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg>
+                <span class="text-xs" style="color:#94a3b8;">Rekap & evaluasi data program pelatihan per periode</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <svg class="flex-shrink-0 mt-0.5" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg>
+                <span class="text-xs" style="color:#94a3b8;">Laporan data peserta untuk keperluan administrasi & evaluasi</span>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-tag">Data Monitoring</span>
+              <span class="tech-tag">Reporting</span>
+              <span class="tech-tag">MySQL</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. DeCafe POS -->
+        <div class="project-card reveal">
+          <div class="img-placeholder" style="padding:0; overflow:hidden;">
+            <img src="assets/img/DeCafe.png" alt="Aplikasi Kasir DeCafe"
+                 style="width:100%; height:100%; object-fit:cover; object-position:top; display:block;" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-2">
+              <div style="width:6px;height:6px;background:#7c3aed;border-radius:50%;box-shadow:0 0 6px #7c3aed;"></div>
+              <span class="font-mono text-xs" style="color:#7c3aed;">Data Analysis · Penjualan</span>
+            </div>
+            <h3 class="font-display font-bold text-white text-lg mb-2">Aplikasi Kasir DeCafe</h3>
+            <p class="text-sm leading-relaxed mb-3" style="color:#94a3b8;">
+              Lebih dari sekadar kasir — sistem ini mengumpulkan data transaksi penjualan dan menyajikannya
+              dalam bentuk laporan analitik harian dan bulanan untuk membantu keputusan bisnis pemilik cafe.
+            </p>
+            <div class="space-y-1.5 mb-4">
+              <div class="flex items-start gap-2">
+                <svg class="flex-shrink-0 mt-0.5" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg>
+                <span class="text-xs" style="color:#94a3b8;">Analisis data penjualan harian, mingguan, dan bulanan</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <svg class="flex-shrink-0 mt-0.5" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg>
+                <span class="text-xs" style="color:#94a3b8;">Identifikasi produk terlaris & tren penjualan</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <svg class="flex-shrink-0 mt-0.5" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg>
+                <span class="text-xs" style="color:#94a3b8;">Rekap transaksi & laporan pendapatan real-time</span>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-tag">Sales Analysis</span>
+              <span class="tech-tag">Trend Analysis</span>
+              <span class="tech-tag">Reporting</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tools used across all projects -->
+        <div class="reveal p-6 rounded-2xl flex flex-col gap-5" style="background:#181b24; border:1px solid #232737;">
+          <div>
+            <p class="font-display font-semibold text-white mb-1">Tools & Teknik yang Digunakan</p>
+            <p class="text-xs" style="color:#6b7280;">Diterapkan lintas seluruh projek di atas</p>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="p-3 rounded-xl" style="background:rgba(255,255,255,0.02); border:1px solid #232737;">
+              <p class="font-mono text-xs mb-2" style="color:#00e5ff;">Query & Agregasi</p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="tech-tag">SQL</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">JOIN</span>
+                <span class="tech-tag">GROUP BY</span>
+              </div>
+            </div>
+            <div class="p-3 rounded-xl" style="background:rgba(255,255,255,0.02); border:1px solid #232737;">
+              <p class="font-mono text-xs mb-2" style="color:#7c3aed;">Visualisasi</p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="tech-tag">Chart.js</span>
+                <span class="tech-tag">Excel</span>
+                <span class="tech-tag">Dashboard</span>
+              </div>
+            </div>
+            <div class="p-3 rounded-xl" style="background:rgba(255,255,255,0.02); border:1px solid #232737;">
+              <p class="font-mono text-xs mb-2" style="color:#00e5ff;">Pelaporan</p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="tech-tag">PDF Report</span>
+                <span class="tech-tag">Export Data</span>
+              </div>
+            </div>
+            <div class="p-3 rounded-xl" style="background:rgba(255,255,255,0.02); border:1px solid #232737;">
+              <p class="font-mono text-xs mb-2" style="color:#7c3aed;">Analitik</p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="tech-tag">Statistik</span>
+                <span class="tech-tag">Trend</span>
+                <span class="tech-tag">KPI</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────── CONTACT ──────────── -->
+  <section id="contact" class="relative py-24 px-6" style="z-index:1;">
+    <div class="max-w-3xl mx-auto text-center reveal">
+      <span class="hero-num">/ 04</span>
+      <h2 class="font-display font-bold text-white mt-2 mb-4" style="font-size: clamp(1.8rem, 5vw, 3rem); letter-spacing:-0.02em;">
+        Mari Berkolaborasi
+      </h2>
+      <p class="text-base leading-relaxed mb-10 max-w-lg mx-auto" style="color:#94a3b8;">
+        Terbuka untuk peluang kerja, freelance, maupun diskusi seputar project. 
+        Jangan ragu untuk menghubungi!
+      </p>
+
+      <!-- Contact cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+        <a href="mailto:riski.sarma28@gmail.com"
+           class="flex flex-col items-center gap-3 p-5 rounded-xl transition-all duration-300"
+           style="background:#181b24; border:1px solid #232737;"
+           onmouseover="this.style.borderColor='rgba(0,229,255,0.3)'; this.style.transform='translateY(-3px)'"
+           onmouseout="this.style.borderColor='#232737'; this.style.transform=''">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(0,229,255,0.08);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <p class="font-mono text-xs mb-1" style="color:#6b7280;">Email</p>
+            <p class="text-sm font-medium" style="color:#e2e8f0;">riski.sarma28@gmail.com</p>
+          </div>
+        </a>
+
+        <a href="tel:+6289516501019"
+           class="flex flex-col items-center gap-3 p-5 rounded-xl transition-all duration-300"
+           style="background:#181b24; border:1px solid #232737;"
+           onmouseover="this.style.borderColor='rgba(0,229,255,0.3)'; this.style.transform='translateY(-3px)'"
+           onmouseout="this.style.borderColor='#232737'; this.style.transform=''">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(0,229,255,0.08);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 0110 3.18 2 2 0 0112 5.09 2 2 0 0114.09 7 2 2 0 0116 8.91v.08a.5.5 0 00.5.5h4.36A2 2 0 0123 11.5v3.42a2 2 0 01-1 1z"/></svg>
+          </div>
+          <div>
+            <p class="font-mono text-xs mb-1" style="color:#6b7280;">WhatsApp / Phone</p>
+            <p class="text-sm font-medium" style="color:#e2e8f0;">+62 895 1650 1019</p>
+          </div>
+        </a>
+
+        <a href="https://www.linkedin.com/in/riski-sarma-670746221/" target="_blank" rel="noopener"
+           class="flex flex-col items-center gap-3 p-5 rounded-xl transition-all duration-300"
+           style="background:#181b24; border:1px solid #232737;"
+           onmouseover="this.style.borderColor='rgba(0,229,255,0.3)'; this.style.transform='translateY(-3px)'"
+           onmouseout="this.style.borderColor='#232737'; this.style.transform=''">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(0,229,255,0.08);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#00e5ff"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <div>
+            <p class="font-mono text-xs mb-1" style="color:#6b7280;">LinkedIn</p>
+            <p class="text-sm font-medium" style="color:#e2e8f0;">riski-sarma</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Location -->
+      <div class="inline-flex items-center gap-2 font-mono text-xs" style="color:#4b5563;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+        Aceh Utara, Indonesia
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────── FOOTER ──────────── -->
+  <footer class="relative py-8 px-6" style="z-index:1; border-top:1px solid #232737;">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      <span class="font-display font-bold text-sm" style="color:#3d4451;">
+        rss<span style="color:#00e5ff">.</span>dev
+      </span>
+      <span class="font-mono text-xs" style="color:#3d4451;">
+        © 2026 Rizki Saputra Sarma
+      </span>
+      <a href="https://portolio-sarma.my.canva.site/" target="_blank" rel="noopener"
+         class="font-mono text-xs transition-colors"
+         style="color:#4b5563;"
+         onmouseover="this.style.color='#00e5ff'"
+         onmouseout="this.style.color='#4b5563'">
+        Canva Portfolio →
+      </a>
+    </div>
+  </footer>
+
+  <!-- ──────────── SCRIPTS ──────────── -->
+  <script>
+    // Intersection Observer for reveal animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, entry.target.dataset.delay || 0);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      observer.observe(el);
+    });
+
+    // Active nav highlight on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 80) current = s.id;
+      });
+      navLinks.forEach(link => {
+        link.style.color = link.getAttribute('href') === '#' + current ? '#00e5ff' : '';
+      });
+    });
+
+    // ── Typewriter Effect ──
+    const twEl = document.getElementById('typewriter');
+    const phrases = [
+      'Fullstack Developer',
+      'Web Developer',
+      'Laravel Enthusiast',
+      'Data Analyst',
+      'IT Support',
+      'Quality Assurance',
+    ];
+    let pIdx = 0, cIdx = 0, deleting = false;
+
+    function type() {
+      const current = phrases[pIdx];
+      if (!deleting) {
+        twEl.textContent = current.slice(0, ++cIdx);
+        if (cIdx === current.length) {
+          // pause at end, then start deleting
+          setTimeout(() => { deleting = true; type(); }, 1800);
+          return;
+        }
+        setTimeout(type, 75);
+      } else {
+        twEl.textContent = current.slice(0, --cIdx);
+        if (cIdx === 0) {
+          deleting = false;
+          pIdx = (pIdx + 1) % phrases.length;
+          setTimeout(type, 400);
+          return;
+        }
+        setTimeout(type, 40);
+      }
+    }
+    // Start after hero fade-in (0.35s delay)
+    setTimeout(type, 900);
+  </script>
+</body>
+</html>
