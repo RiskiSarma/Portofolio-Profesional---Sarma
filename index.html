@@ -3,542 +3,1111 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rizki Saputra Sarma — Portfolio</title>
-  <meta name="description" content="Portfolio Rizki Saputra Sarma — Fullstack Developer & Data Analyst" />
+  <meta name="theme-color" content="#08181b" />
+  <script>document.documentElement.classList.add('js')</script>
+  <title>Rizki Saputra Sarma | Portfolio</title>
+  <meta name="description" content="Portfolio Rizki Saputra Sarma, Fullstack Developer & Data Analyst" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230b0c10'/><text x='5' y='23' font-family='Georgia,serif' font-weight='bold' font-size='18' fill='%23ffffff'>rs</text><circle cx='27' cy='20' r='3' fill='%2300e5ff'/></svg>">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            display: ['Syne', 'sans-serif'],
-            mono: ['DM Mono', 'monospace'],
-            body: ['Manrope', 'sans-serif'],
-          },
-        }
-      }
-    }
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23ffb224'/><text x='5' y='23' font-family='Georgia,serif' font-weight='bold' font-size='18' fill='%2308181b'>rs</text></svg>">
+
   <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { background-color: #0b0c10; color: #e2e8f0; font-family: 'Manrope', sans-serif; overflow-x: hidden; }
-    @keyframes fadeUp { 0%{opacity:0;transform:translateY(28px)} 100%{opacity:1;transform:translateY(0)} }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-    body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.4; }
-    .mesh-bg { position:fixed; inset:0; background: radial-gradient(ellipse 80% 60% at 20% 10%,rgba(0,229,255,.06) 0%,transparent 60%), radial-gradient(ellipse 60% 50% at 80% 80%,rgba(124,58,237,.07) 0%,transparent 55%); pointer-events:none; z-index:0; }
-    ::-webkit-scrollbar{width:4px} ::-webkit-scrollbar-track{background:#0b0c10} ::-webkit-scrollbar-thumb{background:#232737;border-radius:2px} ::-webkit-scrollbar-thumb:hover{background:#00e5ff}
-    .glow-line { height:1px; background:linear-gradient(90deg,transparent,#00e5ff,transparent); }
-    .badge { display:inline-flex; align-items:center; gap:6px; background:rgba(0,229,255,.08); border:1px solid rgba(0,229,255,.18); color:#00e5ff; border-radius:9999px; padding:4px 14px; font-family:'DM Mono',monospace; font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; }
-    .tech-tag { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); color:#94a3b8; border-radius:6px; padding:3px 10px; font-size:.72rem; font-family:'DM Mono',monospace; transition:all .2s ease; }
-    .tech-tag:hover { background:rgba(0,229,255,.06); border-color:rgba(0,229,255,.2); color:#00e5ff; }
-    .project-card { background:#181b24; border:1px solid #232737; border-radius:16px; overflow:hidden; transition:transform .35s cubic-bezier(.34,1.56,.64,1),border-color .3s,box-shadow .3s; position:relative; }
-    .project-card:hover { transform:translateY(-6px); border-color:rgba(0,229,255,.25); box-shadow:0 20px 60px rgba(0,0,0,.5); }
-    .project-card::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,rgba(0,229,255,.3),transparent); opacity:0; transition:opacity .3s; }
-    .project-card:hover::before { opacity:1; }
-    .img-placeholder { width:100%; aspect-ratio:16/9; background:linear-gradient(135deg,#12141a 0%,#1a1d27 50%,#12141a 100%); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
-    .nav-link { color:#6b7280; font-size:.82rem; font-family:'DM Mono',monospace; letter-spacing:.06em; text-transform:uppercase; transition:color .2s; position:relative; }
-    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; right:0; height:1px; background:#00e5ff; transform:scaleX(0); transition:transform .25s; }
-    .nav-link:hover { color:#00e5ff; }
-    .nav-link:hover::after { transform:scaleX(1); }
-    .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease,transform .7s ease; }
-    .reveal.visible { opacity:1; transform:translateY(0); }
-    .hero-num { font-family:'DM Mono',monospace; font-size:.72rem; color:#00e5ff; letter-spacing:.1em; }
-    .featured-dot { width:6px; height:6px; background:#00e5ff; border-radius:50%; display:inline-block; box-shadow:0 0 6px #00e5ff; }
-    /* Unit kompetensi card */
-    .uk-card { background:#181b24; border:1px solid #232737; border-radius:12px; padding:1rem; transition:border-color .2s,box-shadow .2s; }
-    .uk-card:hover { border-color:rgba(0,229,255,.25); box-shadow:0 8px 30px rgba(0,0,0,.3); }
-    .uk-num { font-family:'DM Mono',monospace; font-size:.65rem; color:#00e5ff; background:rgba(0,229,255,.08); border:1px solid rgba(0,229,255,.15); border-radius:6px; padding:2px 8px; }
-    .uk-badge { font-family:'DM Mono',monospace; font-size:.65rem; border-radius:9999px; padding:2px 10px; border:1px solid; }
+    :root {
+      --bg: #08181b;
+      --bg2: #0b2025;
+      --surface: #0f2a2f;
+      --surface2: #143339;
+      --line: #21444b;
+      --text: #eaf2f0;
+      --mute: #8fa9a8;
+      --amber: #ffb224;
+      --amber-d: #c98100;
+      --teal: #2fd6c3;
+      --font: 'Plus Jakarta Sans', system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+    body { background: var(--bg); color: var(--text); font: 400 15.5px/1.65 var(--font); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; text-align: left; }
+    :focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; border-radius: 4px; }
+    ::selection { background: var(--amber); color: var(--bg); }
+    ::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px; }
+    .wrap { width: min(1100px, 100% - 40px); margin-inline: auto; }
+    .hl { color: var(--amber); font-weight: 600; }
+
+    /* ---------- Nav ---------- */
+    #progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 100; background: var(--amber); transform-origin: 0 50%; transform: scaleX(0); }
+    .bar { position: sticky; top: 0; z-index: 90; background: rgba(8, 24, 27, .82); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    .bar .wrap { display: flex; align-items: center; justify-content: space-between; height: 62px; gap: 16px; }
+    .brand { font-weight: 800; text-decoration: none; letter-spacing: -.02em; font-size: 1.05rem; }
+    .brand i { font-style: normal; color: var(--amber); }
+    .bar nav { display: flex; gap: 6px; }
+    .bar nav a { text-decoration: none; font-size: .9rem; font-weight: 500; color: var(--mute); padding: 7px 14px; border-radius: 999px; transition: color .2s, background .2s; }
+    .bar nav a:hover { color: var(--text); }
+    .bar nav a.on { color: var(--text); background: var(--surface2); }
+    .nav-cta { background: var(--amber); color: var(--bg); text-decoration: none; font-weight: 700; font-size: .88rem; padding: 8px 18px; border-radius: 999px; transition: transform .2s, background .2s; }
+    .nav-cta:hover { transform: translateY(-2px); background: #ffc24d; }
+    @media (max-width: 760px) { .bar nav { display: none; } }
+
+    /* ---------- Hero ---------- */
+    .hero { position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(rgba(255, 255, 255, .06) 1px, transparent 1px);
+      background-size: 26px 26px;
+      -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent);
+      mask-image: linear-gradient(180deg, #000 55%, transparent);
+    }
+    .hero-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 400px; gap: 30px; align-items: stretch; }
+    .hero-text { padding: 90px 0 60px; align-self: center; }
+    .hero-text > * { opacity: 0; animation: rise .8s cubic-bezier(.2, .7, .2, 1) forwards; }
+    .hero-text > :nth-child(1) { animation-delay: .1s; } .hero-text > :nth-child(2) { animation-delay: .2s; }
+    .hero-text > :nth-child(3) { animation-delay: .3s; } .hero-text > :nth-child(4) { animation-delay: .4s; } .hero-text > :nth-child(5) { animation-delay: .5s; } .hero-text > :nth-child(6) { animation-delay: .62s; }
+    @keyframes rise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+    .hello { display: inline-flex; align-items: center; gap: 9px; font-size: .9rem; color: var(--mute); margin-bottom: 18px; }
+    .hello::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 4px rgba(47, 214, 195, .18); }
+    .hero h1 { font-weight: 800; font-size: clamp(2.2rem, 4.6vw, 3.4rem); line-height: 1.06; letter-spacing: -.035em; }
+    .hero .lead { margin-top: 18px; max-width: 46ch; font-size: 1.08rem; color: #cfe0dd; }
+    .hero .sub { margin-top: 12px; max-width: 50ch; color: var(--mute); }
+    .btns { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { display: inline-block; text-decoration: none; font-weight: 700; font-size: .93rem; padding: 12px 24px; border-radius: 12px; border: 1px solid var(--line); transition: transform .2s, background .2s, border-color .2s, color .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.main { background: var(--amber); color: var(--bg); border-color: var(--amber); }
+    .btn.main:hover { background: #ffc24d; }
+    .btn.alt:hover { border-color: var(--amber); color: var(--amber); }
+    .quick { margin-top: 34px; display: flex; gap: 30px; flex-wrap: wrap; font-size: .88rem; }
+    .quick dt { color: var(--mute); }
+    .quick dd { font-weight: 600; }
+
+    .strip { position: relative; z-index: 2; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(11, 32, 37, .7); overflow: hidden; padding: 14px 0; }
+    .track { display: flex; width: max-content; animation: slide 46s linear infinite; }
+    .track span { display: inline-flex; align-items: center; gap: 28px; padding-right: 28px; font-weight: 600; font-size: .92rem; color: var(--mute); white-space: nowrap; }
+    .track span::after { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--amber); }
+    @keyframes slide { to { transform: translateX(-50%); } }
+
+    /* ---------- Lanyard ---------- */
+    .lanyard { position: relative; height: 700px; user-select: none; -webkit-user-select: none; }
+    #strap { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .pull { position: absolute; left: 0; right: 0; bottom: 14px; text-align: center; font-size: .82rem; color: var(--mute); pointer-events: none; transition: opacity .4s; }
+    .lanyard.moved .pull { opacity: 0; }
+
+    .idcard { position: absolute; left: 0; top: 0; width: 240px; transform-origin: 50% 0; z-index: 5; opacity: 0; cursor: grab; touch-action: none; will-change: transform; }
+    .idcard.ready { opacity: 1; transition: opacity .3s; }
+    .idcard.grab { cursor: grabbing; }
+    .ring { position: absolute; left: 50%; top: -14px; width: 17px; height: 34px; margin-left: -8.5px; z-index: 4; border: 3.5px solid #c3ccca; border-radius: 10px; box-shadow: 0 1px 3px rgba(0, 0, 0, .45), inset 0 0 0 1px rgba(255, 255, 255, .35); }
+    .face { position: relative; overflow: hidden; border-radius: 16px; background: #f7f6f1; color: #10201f; box-shadow: 0 26px 40px rgba(0, 0, 0, .5); padding-bottom: 12px; }
+    .face::before { content: ''; position: absolute; left: 50%; top: 9px; width: 54px; height: 10px; margin-left: -27px; border-radius: 6px; background: var(--bg); box-shadow: inset 0 2px 3px rgba(0, 0, 0, .7); z-index: 2; }
+    .face::after { content: ''; position: absolute; inset: 0; pointer-events: none; border-radius: inherit; background: linear-gradient(115deg, transparent 32%, rgba(255, 255, 255, .5) 46%, transparent 60%); background-size: 260% 100%; background-position: var(--sx, 50%) 0; mix-blend-mode: soft-light; }
+    .band { background: #0b2a2e; color: #eaf2f0; padding: 30px 14px 10px; display: flex; justify-content: space-between; align-items: baseline; }
+    .band b { font-weight: 800; font-size: .95rem; letter-spacing: -.01em; }
+    .band b i { font-style: normal; color: var(--amber); }
+    .band span { font-size: .72rem; color: #9fc2bf; }
+    .portrait { position: relative; margin: 12px 14px 0; aspect-ratio: 1 / .92; border-radius: 10px; overflow: hidden; background: #dfe6e3; }
+    .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center top; pointer-events: none; }
+    .portrait .ph { position: absolute; inset: 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 6px; text-align: center; padding: 12px; font-size: .74rem; color: #53706d; }
+    .portrait .ph b { font-size: 2.8rem; line-height: 1; color: #0b2a2e; }
+    .portrait.empty img { display: none; }
+    .portrait.empty .ph { display: flex; }
+    .who { padding: 12px 14px 0; }
+    .who strong { display: block; font-weight: 800; font-size: 1.08rem; line-height: 1.2; letter-spacing: -.015em; }
+    .who span { display: block; font-size: .8rem; color: #4d6664; margin-top: 2px; }
+    .fields { margin: 10px 14px 0; padding-top: 9px; border-top: 1px dashed #b7c3c1; display: grid; grid-template-columns: repeat(3, auto); justify-content: space-between; gap: 4px 10px; font-size: .7rem; }
+    .fields dt { color: #6b807e; }
+    .fields dd { font-weight: 700; }
+    .code { margin: 10px 14px 0; height: 24px; background: repeating-linear-gradient(90deg, #10201f 0 2px, transparent 2px 4px, #10201f 4px 5px, transparent 5px 8px, #10201f 8px 11px, transparent 11px 13px); }
+
+    /* ---------- Sections ---------- */
+    section { padding: 96px 0; }
+    section.alt { background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .sec-head { margin-bottom: 40px; max-width: 60ch; }
+    .sec-head h2 { font-weight: 800; font-size: clamp(1.7rem, 3.2vw, 2.3rem); letter-spacing: -.03em; line-height: 1.15; }
+    .sec-head p { margin-top: 10px; color: var(--mute); }
+    .pill { display: inline-block; font-size: .76rem; font-weight: 500; color: #b7cdca; background: var(--surface2); border: 1px solid var(--line); border-radius: 999px; padding: 2px 11px; }
+    .pills { display: flex; flex-wrap: wrap; gap: 7px; }
+
+    /* ---------- Projects (bento) ---------- */
+    .bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; }
+    .s3 { grid-column: span 3; } .s2 { grid-column: span 2; }
+    .pcard { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; width: 100%; transition: transform .3s cubic-bezier(.3, .7, .2, 1), border-color .25s, background .25s; }
+    .pcard:hover { transform: translateY(-5px); border-color: var(--amber); background: var(--surface2); }
+    .thumb { aspect-ratio: 16 / 10; background: #050d0f; display: flex; align-items: center; justify-content: center; overflow: hidden; border-bottom: 1px solid var(--line); }
+    .thumb img { width: 100%; height: 100%; object-fit: contain; transition: transform .5s; }
+    .thumb.top img { object-fit: cover; object-position: top; }
+    .pcard:hover .thumb img { transform: scale(1.03); }
+    .pbody { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .ptop { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; font-size: .8rem; color: var(--mute); }
+    .ptop em { font-style: normal; color: var(--amber); font-weight: 600; }
+    .pbody h3 { font-weight: 700; font-size: 1.05rem; line-height: 1.3; letter-spacing: -.01em; }
+    .pbody .pills { margin-top: auto; padding-top: 6px; }
+    .more-link { font-size: .84rem; font-weight: 700; color: var(--amber); margin-top: 4px; }
+    .full { display: none; }
+
+    /* ---------- Modal ---------- */
+    dialog { margin: auto; width: min(880px, 94vw); max-height: 92vh; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); color: var(--text); padding: 0; overflow: auto; }
+    dialog::backdrop { background: rgba(3, 10, 12, .78); backdrop-filter: blur(5px); }
+    dialog[open] { animation: pop .3s cubic-bezier(.2, .8, .2, 1); }
+    @keyframes pop { from { opacity: 0; transform: translateY(16px) scale(.98); } to { opacity: 1; transform: none; } }
+    .m-img { background: #050d0f; border-bottom: 1px solid var(--line); display: flex; justify-content: center; }
+    .m-img img { width: 100%; max-height: 420px; object-fit: contain; }
+    .m-img.top img { object-fit: cover; object-position: top; }
+    .m-body { padding: 26px 30px 28px; }
+    .m-body .kicker { font-size: .84rem; color: var(--amber); font-weight: 600; }
+    .m-body h3 { margin-top: 4px; font-weight: 800; font-size: 1.5rem; letter-spacing: -.02em; line-height: 1.2; }
+    .m-body p { margin-top: 12px; max-width: 64ch; color: #cfe0dd; }
+    .m-body .pills { margin-top: 18px; }
+    .m-nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 30px; border-top: 1px solid var(--line); }
+    .m-nav button { padding: 8px 16px; border: 1px solid var(--line); border-radius: 10px; font-size: .88rem; font-weight: 600; transition: border-color .2s, color .2s; }
+    .m-nav button:hover { border-color: var(--amber); color: var(--amber); }
+    .m-close { position: absolute; top: 14px; right: 14px; z-index: 3; width: 38px; height: 38px; border-radius: 50%; background: rgba(8, 24, 27, .85); border: 1px solid var(--line); display: grid; place-items: center; font-size: 1.1rem; }
+    .m-close:hover { border-color: var(--amber); color: var(--amber); }
+    body.lock { overflow: hidden; }
+
+    /* ---------- Data ---------- */
+    .stepper { display: flex; gap: 0; margin-bottom: 26px; overflow-x: auto; padding-bottom: 8px; }
+    .step { flex: 1 0 160px; position: relative; padding: 0 12px 0 0; }
+    .step::before { content: ''; position: absolute; left: 38px; right: 8px; top: 18px; height: 2px; background: var(--line); }
+    .step:last-child::before { display: none; }
+    .step i { position: relative; z-index: 1; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; font-style: normal; font-weight: 800; background: var(--bg2); border: 2px solid var(--line); color: var(--mute); transition: all .25s; }
+    .step span { display: block; margin-top: 10px; font-size: .86rem; font-weight: 600; color: var(--mute); line-height: 1.35; max-width: 140px; transition: color .25s; }
+    .step:hover i { border-color: var(--amber); }
+    .step.on i { background: var(--amber); border-color: var(--amber); color: var(--bg); }
+    .step.on span { color: var(--text); }
+    .spanel { display: none; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .spanel.on { display: grid; animation: swap .35s ease; }
+    @keyframes swap { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    .note { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; color: #cfe0dd; font-size: .93rem; }
+    .tagp { display: inline-block; font-size: .74rem; font-weight: 800; border-radius: 6px; padding: 1px 9px; margin-bottom: 8px; }
+    .tagp.a { background: rgba(255, 178, 36, .16); color: var(--amber); }
+    .tagp.b { background: rgba(47, 214, 195, .15); color: var(--teal); }
+    .tagp.c { background: rgba(234, 242, 240, .12); color: var(--text); }
+
+    .cases { margin-top: 80px; }
+    .cases > h3 { font-weight: 800; font-size: 1.5rem; letter-spacing: -.02em; margin-bottom: 20px; }
+    .case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .case { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
+    .case .thumb { aspect-ratio: 16 / 9.5; }
+    .case .cb { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .case h4 { font-weight: 700; font-size: 1.02rem; line-height: 1.3; }
+    .case p { font-size: .88rem; color: #b7cdca; }
+    .checks { list-style: none; display: grid; gap: 7px; font-size: .86rem; color: #cfe0dd; }
+    .checks li { position: relative; padding-left: 18px; }
+    .checks li::before { content: ''; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: var(--amber); }
+    .case .pills { margin-top: auto; padding-top: 4px; }
+
+    /* ---------- Stack & certs ---------- */
+    .stack-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .stack-box { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px 24px; }
+    .stack-box h3 { font-weight: 700; font-size: 1.02rem; margin-bottom: 14px; }
+    .certs { margin-top: 70px; }
+    .certs > h3 { font-weight: 800; font-size: 1.5rem; letter-spacing: -.02em; margin-bottom: 20px; }
+    .cert-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .cert { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px 18px 22px; overflow: hidden; }
+    .cert::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--amber); }
+    .cert.k2::before { background: var(--teal); }
+    .cert strong { display: block; font-weight: 700; line-height: 1.35; }
+    .cert span { display: block; margin-top: 4px; font-size: .84rem; color: var(--mute); }
+    .cert .wait { display: inline-block; margin-top: 8px; padding: 1px 10px; border-radius: 999px; font-size: .76rem; font-weight: 700; color: var(--amber); background: rgba(255, 178, 36, .14); }
+
+    /* ---------- Contact ---------- */
+    .cta-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 54px; position: relative; overflow: hidden; }
+    .cta-panel::before { content: ''; position: absolute; right: -80px; top: -80px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(rgba(255, 178, 36, .22), transparent 70%); pointer-events: none; }
+    .cta-panel h2 { font-weight: 800; font-size: clamp(1.8rem, 3.6vw, 2.6rem); letter-spacing: -.03em; line-height: 1.12; }
+    .cta-panel p { margin-top: 14px; color: var(--mute); max-width: 42ch; }
+    .loc { margin-top: 22px; font-size: .88rem; color: var(--mute); }
+    .links { position: relative; display: grid; gap: 12px; }
+    .links a, .links button { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 16px 20px; border-radius: 14px; border: 1px solid var(--line); background: var(--bg2); text-decoration: none; transition: border-color .2s, transform .2s, background .2s; }
+    .links a:hover, .links button:hover { border-color: var(--amber); transform: translateX(4px); }
+    .links .k { display: block; font-size: .76rem; color: var(--mute); }
+    .links .v { display: block; font-weight: 700; font-size: 1rem; word-break: break-all; }
+    .links .go { font-size: .82rem; font-weight: 700; color: var(--amber); white-space: nowrap; }
+
+    footer { border-top: 1px solid var(--line); padding: 26px 0; font-size: .86rem; color: var(--mute); }
+    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    footer a:hover { color: var(--amber); }
+
+    /* ---------- KARYALOKAL ---------- */
+    .brand-panel { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 40px; position: relative; overflow: hidden; }
+    .wordmark { font-weight: 800; font-size: clamp(1.7rem, 3.2vw, 2.3rem); letter-spacing: .03em; line-height: 1.1; }
+    .wordmark i { font-style: normal; color: var(--amber); }
+    .bsub { margin-top: 4px; font-size: .88rem; color: var(--mute); }
+    .btag { margin-top: 16px; font-weight: 700; color: var(--amber); }
+    .bdesc { margin-top: 12px; max-width: 52ch; color: #cfe0dd; }
+    .brand-panel .btns { margin-top: 24px; }
+    .svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .svc { background: var(--bg2); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; transition: border-color .25s, transform .25s; }
+    .svc:hover { border-color: var(--amber); transform: translateY(-3px); }
+    .svc b { display: block; font-weight: 700; font-size: .95rem; }
+    .svc span { display: block; margin-top: 3px; font-size: .84rem; color: var(--mute); line-height: 1.5; }
+    .site-shot { margin-top: 18px; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--surface); }
+    .site-shot[hidden] { display: none; }
+    .browser-bar { display: flex; align-items: center; gap: 7px; padding: 10px 14px; border-bottom: 1px solid var(--line); font-size: .8rem; color: var(--mute); }
+    .browser-bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--line); }
+    .browser-bar em { font-style: normal; margin-left: 8px; }
+    .site-shot img { width: 100%; max-height: 440px; object-fit: cover; object-position: top; }
+    .kgrid { margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .kcard { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: transform .3s cubic-bezier(.3, .7, .2, 1), border-color .25s; }
+    .kcard:hover { transform: translateY(-5px); border-color: var(--amber); }
+    .kcard .cb { padding: 18px 20px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .kcard .by { font-size: .8rem; font-weight: 600; color: var(--amber); }
+    .kcard h3 { font-weight: 700; font-size: 1.2rem; letter-spacing: -.01em; }
+    .kcard dt { margin-top: 6px; font-size: .78rem; font-weight: 700; color: var(--mute); }
+    .kcard dd { font-size: .9rem; color: #cfe0dd; }
+    .kcard .pills { margin-top: auto; padding-top: 10px; }
+
+    /* ---------- Animasi ---------- */
+    .js .rv { opacity: 0; }
+    .js .rv.in { opacity: 1; animation: rvIn .85s cubic-bezier(.2, .7, .2, 1) backwards; animation-delay: var(--d, 0s); }
+    .js .rv.zoom.in { animation-name: rvZoom; }
+    .js .rv.left.in { animation-name: rvLeft; }
+    @keyframes rvIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+    @keyframes rvZoom { from { opacity: 0; transform: translateY(26px) scale(.94); } to { opacity: 1; transform: none; } }
+    @keyframes rvLeft { from { opacity: 0; transform: translateX(-34px); } to { opacity: 1; transform: none; } }
+
+    .sec-head h2::after { content: ''; display: block; width: 0; height: 3px; margin-top: 14px; border-radius: 2px; background: var(--amber); transition: width .9s .35s cubic-bezier(.2, .7, .2, 1); }
+    .sec-head.in h2::after, html:not(.js) .sec-head h2::after { width: 56px; }
+
+    .hero h1 .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .1em; margin-bottom: -.1em; }
+    .hero h1 .w > span { display: inline-block; transform: translateY(115%); animation: wordUp .9s cubic-bezier(.2, .8, .2, 1) forwards; }
+    .hero h1 .w:nth-of-type(1) > span { animation-delay: .25s; }
+    .hero h1 .w:nth-of-type(2) > span { animation-delay: .4s; }
+    .hero h1 .w:nth-of-type(3) > span { animation-delay: .55s; }
+    @keyframes wordUp { to { transform: none; } }
+    .role { margin-top: 14px; font-weight: 600; font-size: 1.05rem; color: var(--amber); min-height: 1.7em; }
+    .caret { display: inline-block; width: 2px; height: 1.05em; margin-left: 3px; background: var(--amber); vertical-align: -.15em; animation: blink 1s step-end infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .glow { position: absolute; right: 4%; top: 8%; width: 560px; height: 560px; border-radius: 50%; z-index: 1; pointer-events: none; background: radial-gradient(circle, rgba(255, 178, 36, .15), transparent 68%); animation: floatGlow 12s ease-in-out infinite alternate; }
+    @keyframes floatGlow { from { transform: translate(0, 0) scale(1); } to { transform: translate(-50px, 40px) scale(1.15); } }
+    .hero::before { animation: dots 28s linear infinite; }
+    @keyframes dots { to { background-position: 26px 26px; } }
+    .pull { animation: nudge 2.6s ease-in-out infinite; }
+    .lanyard.moved .pull { animation: none; opacity: 0; }
+    @keyframes nudge { 0%, 100% { transform: translateY(0); opacity: .6; } 50% { transform: translateY(-5px); opacity: 1; } }
+    .strip:hover .track { animation-play-state: paused; }
+    .bar { transition: transform .4s cubic-bezier(.2, .7, .2, 1); }
+    .bar.hide { transform: translateY(-100%); }
+    .btn, .nav-cta { will-change: transform; }
+
+    .pcard, .stack-box, .note, .case { position: relative; }
+    .pcard::before, .stack-box::before, .note::before, .case::before { content: ''; position: absolute; inset: 0; z-index: 1; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s; background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 178, 36, .12), transparent 60%); }
+    .pcard:hover::before, .stack-box:hover::before, .note:hover::before, .case:hover::before { opacity: 1; }
+    .pcard.in .thumb img { animation: imgIn 1.3s cubic-bezier(.2, .7, .2, 1) backwards; animation-delay: calc(var(--d, 0s) + .15s); }
+    @keyframes imgIn { from { transform: scale(1.16); } to { transform: scale(1); } }
+
+    .js .stack-box .pill { opacity: 0; transform: scale(.8); }
+    .stack-box.in .pill { animation: pillIn .5s cubic-bezier(.3, 1.5, .4, 1) forwards; animation-delay: calc(.25s + var(--pi, 0) * .045s); }
+    @keyframes pillIn { to { opacity: 1; transform: none; } }
+    .js .cert::before { transform: scaleY(0); transform-origin: top; transition: transform .7s .35s ease; }
+    .cert.in::before { transform: scaleY(1); }
+    .step::before { transition: background .4s; }
+    .step.done::before { background: var(--amber); }
+    .spanel.on .note { animation: swap .5s ease backwards; }
+    .spanel.on .note:nth-child(2) { animation-delay: .12s; }
+    .cta-panel::before { animation: floatGlow 10s ease-in-out infinite alternate; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 960px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 0; }
+      .lanyard { order: -1; height: 600px; }
+      .hero-text { padding: 10px 0 56px; }
+      .bento { grid-template-columns: repeat(2, 1fr); }
+      .s3 { grid-column: span 2; } .s2 { grid-column: span 1; }
+      .case-grid, .cert-grid { grid-template-columns: repeat(2, 1fr); }
+      .cta-panel { grid-template-columns: 1fr; padding: 36px 28px; gap: 32px; }
+      .brand-panel { grid-template-columns: 1fr; padding: 28px; gap: 28px; }
+    }
+    @media (max-width: 620px) {
+      section { padding: 70px 0; }
+      .bento, .case-grid, .cert-grid, .stack-grid, .kgrid, .svc-grid { grid-template-columns: 1fr; }
+      .s3, .s2 { grid-column: span 1; }
+      .idcard { width: 218px; }
+      .m-body { padding: 22px 20px; } .m-nav { padding: 12px 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-text > * { opacity: 1; animation: none; }
+      .js .rv { opacity: 1; } .js .rv.in { animation: none; }
+      .js .stack-box .pill { opacity: 1; transform: none; } .stack-box.in .pill { animation: none; }
+      .js .cert::before { transform: none; transition: none; }
+      .hero h1 .w > span { transform: none; animation: none; }
+      .glow, .hero::before, .cta-panel::before, .pull, .caret { animation: none; }
+      .pcard.in .thumb img, .spanel.on .note { animation: none; }
+      .sec-head h2::after { width: 56px; transition: none; }
+      .bar { transition: none; }
+      .track { animation: none; }
+      dialog[open], .spanel.on { animation: none; }
+      .pcard, .btn, .thumb img { transition: none; }
+    }
   </style>
 </head>
 <body>
-<div class="mesh-bg"></div>
+<div id="progress" aria-hidden="true"></div>
 
-<!-- NAVBAR -->
-<nav class="fixed top-0 left-0 right-0 z-50" style="background:rgba(11,12,16,.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(35,39,55,.6)">
-  <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
-    <span class="font-display font-bold text-white text-sm tracking-wide">rss<span style="color:#00e5ff">.</span>dev</span>
-    <div class="flex items-center gap-6 md:gap-8">
-      <a href="#projects" class="nav-link">Projects</a>
-      <a href="#skills" class="nav-link">Skills</a>
-      <a href="#data-analyst" class="nav-link">Data Analyst</a>
-      <a href="#contact" class="nav-link">Contact</a>
+<header class="bar">
+  <div class="wrap">
+    <a href="#top" class="brand">rss<i>.</i>dev</a>
+    <nav aria-label="Navigasi utama">
+      <a href="#proyek">Projek</a>
+      <a href="#karyalokal">Karyalokal</a>
+      <a href="#data">Data</a>
+      <a href="#stack">Stack</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+    <a href="#kontak" class="nav-cta">Hubungi saya</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <div class="hero" id="top">
+    <div class="glow" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <span class="hello">Open to work: Fullstack Developer & Data Analyst</span>
+        <h1><span class="w"><span>Rizki</span></span> <span class="w"><span>Saputra</span></span> <span class="w"><span>Sarma</span></span></h1>
+        <p class="role"><span id="roleText"></span><span class="caret"></span></p>
+        <p class="lead"><span class="hl">Fullstack Developer dan Data Analyst</span> yang berbasis di Aceh Utara. Berpengalaman membangun aplikasi web, sistem POS multi-tenant, dan sistem presensi berbasis pengenalan wajah.</p>
+        <p class="sub">Lulusan D-IV Teknik Informatika Politeknik Negeri Lhokseumawe. Berpengalaman dengan PHP, Laravel, JavaScript, dan MySQL, serta pengolahan data untuk klasifikasi dan visualisasi.</p>
+        <div>
+          <div class="btns">
+            <a href="#proyek" class="btn main">Lihat projek</a>
+            <a href="#kontak" class="btn alt">Hubungi saya</a>
+          </div>
+          <dl class="quick">
+            <div><dt>Terbaru</dt><dd>Presensi wajah, 2026</dd></div>
+            <div><dt>Sertifikasi BNSP</dt><dd>Web Developer & Data Analyst</dd></div>
+            <div><dt>Magang</dt><dd>BPVP Banda Aceh</dd></div>
+          </dl>
+        </div>
+      </div>
+
+      <!-- Lanyard. Taruh foto kamu di assets/img/foto.jpg -->
+      <div class="lanyard" id="lanyard">
+        <canvas id="strap" aria-hidden="true"></canvas>
+        <div class="idcard" id="idcard">
+          <span class="ring" aria-hidden="true"></span>
+          <div class="face">
+            <div class="band"><b>rss<i>.</i>dev</b><span>Portfolio Pass</span></div>
+            <div class="portrait" id="photo">
+              <img id="foto" src="assets/img/foto.jpg" alt="Foto Rizki Saputra Sarma" draggable="false" />
+              <div class="ph"><b>RS</b><span>taruh foto di<br/>assets/img/foto.jpg</span></div>
+            </div>
+            <div class="who">
+              <strong>Rizki Saputra Sarma</strong>
+              <span>Fullstack Developer & Data Analyst</span>
+            </div>
+            <dl class="fields">
+              <div><dt>Lokasi</dt><dd>Aceh Utara</dd></div>
+              <div><dt>Stack</dt><dd>Laravel</dd></div>
+              <div><dt>Status</dt><dd>Terbuka</dd></div>
+            </dl>
+            <div class="code" aria-hidden="true"></div>
+          </div>
+        </div>
+        <p class="pull">Coba tarik kartunya</p>
+      </div>
+    </div>
+
+    <div class="strip" aria-hidden="true">
+      <div class="track">
+        <span>Laravel</span><span>Next.js</span><span>TypeScript</span><span>Python FastAPI</span><span>MySQL</span><span>PostgreSQL</span><span>Tailwind CSS</span><span>Docker</span><span>n8n</span><span>Git</span><span>Figma</span><span>Chart.js</span>
+        <span>Laravel</span><span>Next.js</span><span>TypeScript</span><span>Python FastAPI</span><span>MySQL</span><span>PostgreSQL</span><span>Tailwind CSS</span><span>Docker</span><span>n8n</span><span>Git</span><span>Figma</span><span>Chart.js</span>
+      </div>
     </div>
   </div>
-</nav>
 
-<!-- HERO -->
-<section class="relative min-h-screen flex items-center justify-center px-6 pt-14" style="z-index:1">
-  <div class="max-w-3xl w-full mx-auto text-center">
-    <div class="flex justify-center mb-8" style="animation:fadeUp .6s ease .1s forwards;opacity:0">
-      <div class="badge"><span class="featured-dot"></span>Available for opportunities</div>
-    </div>
-    <h1 class="font-display font-extrabold leading-none mb-4 text-white"
-        style="font-size:clamp(2.8rem,8vw,5.5rem);letter-spacing:-.03em;animation:fadeUp .7s ease .2s forwards;opacity:0">
-      Rizki Saputra<br/>
-      <span style="background:linear-gradient(135deg,#00e5ff 0%,#7c3aed 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Sarma</span>
-    </h1>
-    <p class="font-mono text-lg mb-6" style="color:#00e5ff;animation:fadeUp .7s ease .35s forwards;opacity:0;min-height:1.8rem">
-      <span id="typewriter"></span><span style="display:inline-block;width:2px;height:1.1em;background:#00e5ff;margin-left:3px;vertical-align:middle;animation:blink 1s step-end infinite"></span>
-    </p>
-    <p class="text-base leading-relaxed max-w-xl mx-auto mb-10" style="color:#94a3b8;animation:fadeUp .7s ease .45s forwards;opacity:0">
-      Lulusan D-IV Teknik Informatika Politeknik Negeri Lhokseumawe. Berpengalaman membangun aplikasi web
-      dengan <span style="color:#e2e8f0">PHP, Laravel, JavaScript</span>, dan <span style="color:#e2e8f0">MySQL</span>. Siap berkolaborasi dan terus belajar.
-    </p>
-    <div class="flex items-center justify-center gap-4 flex-wrap" style="animation:fadeUp .7s ease .55s forwards;opacity:0">
-      <a href="#projects" class="flex items-center gap-2 px-6 py-3 rounded-xl font-display font-semibold text-sm" style="background:#00e5ff;color:#0b0c10;box-shadow:0 4px 24px rgba(0,229,255,.25);transition:all .3s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 32px rgba(0,229,255,.4)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 24px rgba(0,229,255,.25)'">
-        Lihat Projek <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-      </a>
-      <a href="#contact" class="flex items-center gap-2 px-6 py-3 rounded-xl font-display font-semibold text-sm" style="border:1px solid #232737;color:#e2e8f0;background:transparent;transition:all .3s" onmouseover="this.style.borderColor='rgba(0,229,255,.35)';this.style.color='#00e5ff'" onmouseout="this.style.borderColor='#232737';this.style.color='#e2e8f0'">Kontak Saya</a>
-    </div>
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50" style="animation:float 5s ease-in-out infinite">
-      <span class="font-mono text-xs" style="color:#6b7280">scroll</span>
-      <svg width="16" height="20" viewBox="0 0 16 24" fill="none" stroke="#6b7280" stroke-width="1.5"><rect x="1" y="1" width="14" height="22" rx="7"/><line x1="8" y1="6" x2="8" y2="10" stroke-width="2" stroke-linecap="round"/></svg>
-    </div>
-  </div>
-</section>
+  <!-- PROJECTS -->
+  <section id="proyek">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Projek</h2>
+        <p>Sistem dan aplikasi yang pernah saya bangun. Klik kartunya untuk melihat detail lengkap.</p>
+      </div>
 
-<!-- PROJECTS -->
-<section id="projects" class="relative py-24 px-6" style="z-index:1">
-  <div class="max-w-5xl mx-auto">
-    <div class="flex items-end justify-between mb-16 reveal">
+      <div class="bento" id="bento">
+        <button class="pcard s3" data-top="0">
+          <div class="thumb"><img src="assets/img/Sistem Presensi Cafe.png" alt="Sistem Presensi Karyawan Cafe" loading="lazy" /></div>
+          <div class="pbody">
+            <div class="ptop"><span>Produk KARYALOKAL</span><em>2026, terbaru</em></div>
+            <h3>Sistem Presensi Karyawan Cafe, Face Recognition</h3>
+            <div class="pills"><span class="pill">Laravel 12</span><span class="pill">Next.js 14</span><span class="pill">Python FastAPI</span></div>
+            <span class="more-link">Lihat detail</span>
+            <div class="full">
+              <p>Sistem absensi karyawan cafe berbasis pengenalan wajah dengan mode kiosk & mobile, mendukung multi-cabang. Backend REST API Laravel 12 mengatur data karyawan, jadwal, dan rekap presensi; microservice Python FastAPI menangani proses deteksi & pengenalan wajah; frontend Next.js 14 tampil dengan motif kartu bergaya struk (receipt-style card UI).</p>
+              <div class="pills"><span class="pill">Laravel 12</span><span class="pill">Next.js 14</span><span class="pill">Python FastAPI</span><span class="pill">Face Recognition</span><span class="pill">REST API</span><span class="pill">Multi-Branch</span></div>
+            </div>
+          </div>
+        </button>
+
+        <button class="pcard s3" data-top="0">
+          <div class="thumb"><img src="assets/img/Sistem Aplikasi POS.png" alt="KasirHub POS" loading="lazy" /></div>
+          <div class="pbody">
+            <div class="ptop"><span>Produk KARYALOKAL</span><em>2025–2026</em></div>
+            <h3>KasirHub POS, Multi-Tenant SaaS</h3>
+            <div class="pills"><span class="pill">Laravel 12</span><span class="pill">Midtrans</span><span class="pill">Multi-Tenant</span></div>
+            <span class="more-link">Lihat detail</span>
+            <div class="full">
+              <p>Aplikasi POS SaaS multi-tenant (Bisnis Kopi Nusantara) untuk banyak bisnis dalam satu platform. Fitur manajemen shift, export laporan Excel, kustomisasi struk, poin loyalitas, split bill, audit log, sistem kupon & subscription, serta integrasi payment gateway Midtrans di level platform maupun per-bisnis. Dilengkapi REST API mobile (Sanctum) untuk role kasir & admin.</p>
+              <div class="pills"><span class="pill">Laravel 12</span><span class="pill">Alpine.js</span><span class="pill">Tailwind CSS</span><span class="pill">MySQL</span><span class="pill">Midtrans</span><span class="pill">Laravel Sanctum</span><span class="pill">Multi-Tenant</span></div>
+            </div>
+          </div>
+        </button>
+
+        <button class="pcard s2" data-top="0">
+          <div class="thumb"><img src="assets/img/SI_pelatihan.png" alt="Sistem Informasi Pelatihan" loading="lazy" /></div>
+          <div class="pbody">
+            <div class="ptop"><span>Magang, MagangHub Kemnaker</span><em>2025–2026</em></div>
+            <h3>Sistem Informasi Pelatihan</h3>
+            <div class="pills"><span class="pill">Laravel</span><span class="pill">MySQL</span></div>
+            <span class="more-link">Lihat detail</span>
+            <div class="full">
+              <p>Platform manajemen pelatihan di BPVP Banda Aceh (Internship Project). Data peserta dikumpulkan dari Google Form (15 kolom), diseleksi 12 kolom, lalu diimport ke sistem dengan proses data cleaning pada nama kolom.</p>
+              <div class="pills"><span class="pill">PHP</span><span class="pill">Laravel</span><span class="pill">MySQL</span><span class="pill">Tailwind CSS</span><span class="pill">REST API</span><span class="pill">JavaScript</span></div>
+            </div>
+          </div>
+        </button>
+
+        <button class="pcard s2" data-top="0">
+          <div class="thumb"><img src="assets/img/DeCafe.png" alt="DeCafe" loading="lazy" /></div>
+          <div class="pbody">
+            <div class="ptop"><span>Akademik</span><em>2024</em></div>
+            <h3>DeCafe, Aplikasi Kasir Berbasis Web</h3>
+            <div class="pills"><span class="pill">PHP</span><span class="pill">MySQL</span></div>
+            <span class="more-link">Lihat detail</span>
+            <div class="full">
+              <p>Sistem point-of-sale (POS) berbasis web untuk manajemen transaksi kedai kopi. Mencakup manajemen menu, pencatatan pesanan, laporan penjualan harian, dan rekap transaksi secara real-time.</p>
+              <div class="pills"><span class="pill">PHP</span><span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">JavaScript</span><span class="pill">MySQL</span><span class="pill">Bootstrap</span></div>
+            </div>
+          </div>
+        </button>
+
+        <button class="pcard s2" data-top="1">
+          <div class="thumb top"><img src="assets/img/web koperasi.jpeg" alt="Sistem Koperasi Syariah" loading="lazy" /></div>
+          <div class="pbody">
+            <div class="ptop"><span>Magang, BPR Syariah Hikmah Wakilah</span><em>2024</em></div>
+            <h3>Sistem Koperasi Syariah Karyawan</h3>
+            <div class="pills"><span class="pill">PHP</span><span class="pill">MySQL</span></div>
+            <span class="more-link">Lihat detail</span>
+            <div class="full">
+              <p>Manajemen koperasi syariah untuk karyawan BPR Syariah Hikmah Wakilah (Internship Project). Fitur simpan-pinjam, laporan keuangan, dan data anggota.</p>
+              <div class="pills"><span class="pill">PHP</span><span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">JavaScript</span><span class="pill">MySQL</span><span class="pill">Bootstrap</span></div>
+            </div>
+          </div>
+        </button>
+
+        <button class="pcard s3" data-top="0">
+          <div class="thumb"><img src="assets/img/SKDB.jpeg" alt="Sistem Deteksi Keterlambatan Belajar Siswa" loading="lazy" /></div>
+          <div class="pbody">
+            <div class="ptop"><span>Akademik</span><em>2023–2024</em></div>
+            <h3>Sistem Deteksi Keterlambatan Belajar Siswa</h3>
+            <div class="pills"><span class="pill">Decision Tree CART</span><span class="pill">PHP</span><span class="pill">MySQL</span></div>
+            <span class="more-link">Lihat detail</span>
+            <div class="full">
+              <p>Sistem berbasis web untuk mendeteksi keterlambatan perkembangan belajar anak pada aspek motorik, kognitif, dan bahasa menggunakan algoritma Decision Tree CART. Dataset dari Kaggle (80.000 data, 20 kolom), diseleksi 10 kolom relevan, lalu dilatih & diuji untuk klasifikasi otomatis.</p>
+              <div class="pills"><span class="pill">PHP</span><span class="pill">MySQL</span><span class="pill">Decision Tree CART</span><span class="pill">Bootstrap5</span><span class="pill">JavaScript</span></div>
+            </div>
+          </div>
+        </button>
+
+        <button class="pcard s3" data-top="1">
+          <div class="thumb top"><img src="assets/img/kartu_ujian.png" alt="Aplikasi Kartu Ujian" loading="lazy" /></div>
+          <div class="pbody">
+            <div class="ptop"><span>Akademik</span><em>2023</em></div>
+            <h3>Aplikasi Kartu Ujian Berbasis Web</h3>
+            <div class="pills"><span class="pill">PHP</span><span class="pill">MySQL</span><span class="pill">JavaScript</span></div>
+            <span class="more-link">Lihat detail</span>
+            <div class="full">
+              <p>Sistem pembuatan dan pengelolaan kartu ujian secara digital. Otomatisasi generate kartu ujian berdasarkan data peserta.</p>
+              <div class="pills"><span class="pill">PHP</span><span class="pill">MySQL</span><span class="pill">HTML/CSS</span><span class="pill">JavaScript</span></div>
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- KARYALOKAL -->
+  <section id="karyalokal" class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>KARYALOKAL</h2>
+        <p>Brand software development milik saya. KasirHub dan Presensi Cafe dikembangkan dan dikelola di bawah brand ini.</p>
+      </div>
+
+      <div class="brand-panel">
+        <div>
+          <div class="wordmark">KARYA<i>LOKAL</i></div>
+          <div class="bsub">Software Development & Digital Solutions</div>
+          <p class="btag">Berakar Lokal, Berdampak Global.</p>
+          <p class="bdesc">Jasa pembuatan website, aplikasi bisnis, dan sistem informasi untuk UMKM, perusahaan, organisasi, dan instansi. Setiap solusi dimulai dari alur kerja dan masalah nyata di lapangan.</p>
+          <div class="btns">
+            <a href="https://www.karyalokal.com" target="_blank" rel="noopener" class="btn main">Kunjungi karyalokal.com</a>
+          </div>
+        </div>
+        <div class="svc-grid">
+          <div class="svc"><b>Custom Website</b><span>Company profile, landing page, dan website bisnis.</span></div>
+          <div class="svc"><b>Web Application</b><span>Aplikasi web untuk operasional harian: pesanan, stok, pelanggan, hingga laporan.</span></div>
+          <div class="svc"><b>Business Automation</b><span>Pekerjaan manual yang berulang diubah menjadi alur otomatis.</span></div>
+          <div class="svc"><b>Software Maintenance</b><span>Perbaikan bug, pembaruan fitur, keamanan, dan pemantauan server.</span></div>
+        </div>
+      </div>
+
+      <!-- Opsional: simpan screenshot website di assets/img/karyalokal.png, akan tampil otomatis -->
+      <figure class="site-shot" id="siteShot" hidden>
+        <div class="browser-bar"><i></i><i></i><i></i><em>karyalokal.com</em></div>
+        <img id="siteImg" src="" alt="Tampilan website KARYALOKAL" />
+      </figure>
+
+      <div class="kgrid">
+        <article class="kcard">
+          <div class="thumb"><img src="assets/img/Sistem Aplikasi POS.png" alt="KasirHub" loading="lazy" /></div>
+          <div class="cb">
+            <span class="by">A product by Karyalokal</span>
+            <h3>KasirHub</h3>
+            <dl>
+              <dt>Masalah</dt><dd>Pemilik usaha masih mencatat transaksi dan stok secara manual, sehingga laporan lambat dan sering selisih.</dd>
+              <dt>Solusi</dt><dd>Aplikasi kasir berbasis web dengan pencatatan transaksi dan laporan penjualan yang tersusun otomatis.</dd>
+            </dl>
+            <div class="pills"><span class="pill">Web app</span><span class="pill">Multi-tenant</span><span class="pill">Laravel</span></div>
+          </div>
+        </article>
+
+        <article class="kcard">
+          <div class="thumb"><img src="assets/img/Sistem Presensi Cafe.png" alt="Presensi Cafe" loading="lazy" /></div>
+          <div class="cb">
+            <span class="by">A product by Karyalokal</span>
+            <h3>Presensi Cafe</h3>
+            <dl>
+              <dt>Masalah</dt><dd>Absen kertas di kafe dan warkop rawan titip absen dan merepotkan saat rekap gaji.</dd>
+              <dt>Solusi</dt><dd>Presensi karyawan berbasis pengenalan wajah dengan rekap kehadiran otomatis per outlet.</dd>
+            </dl>
+            <div class="pills"><span class="pill">Face recognition</span><span class="pill">Multi-tenant</span><span class="pill">Laravel</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- DATA ANALYST -->
+  <section id="data">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Data analyst</h2>
+        <p>Sistem yang saya bangun tidak berhenti di aplikasi web. Datanya ikut dianalisis, dari kebutuhan, pengumpulan, pembersihan, sampai visualisasi sebagai dasar keputusan. Sertifikasi BNSP Data Analyst sedang dalam proses penerbitan.</p>
+      </div>
+
+      <div class="stepper" role="tablist" aria-label="Tahap analisis data">
+        <button class="step on" role="tab" aria-selected="true" data-step="s1"><i>1</i><span>Seleksi & kebutuhan data</span></button>
+        <button class="step" role="tab" aria-selected="false" data-step="s2"><i>2</i><span>Pengumpulan data</span></button>
+        <button class="step" role="tab" aria-selected="false" data-step="s3"><i>3</i><span>Integrasi & pembersihan</span></button>
+        <button class="step" role="tab" aria-selected="false" data-step="s4"><i>4</i><span>Klasifikasi & validasi model</span></button>
+        <button class="step" role="tab" aria-selected="false" data-step="s5"><i>5</i><span>Visualisasi & dashboard</span></button>
+      </div>
+
       <div>
-        <span class="hero-num">/ 01</span>
-        <h2 class="font-display font-bold text-white mt-1" style="font-size:clamp(2rem,5vw,3rem);letter-spacing:-.02em">Projek</h2>
-        <p style="color:#6b7280;font-size:.9rem;margin-top:6px">Kumpulan sistem & aplikasi yang pernah dibangun</p>
+        <div class="spanel on" id="s1">
+          <div class="note"><span class="tagp a">SDKB</span><p>Dataset Kaggle punya 20 kolom. Relevansinya dianalisis terhadap kebutuhan guru, lalu dipilih <span class="hl">10 kolom</span> sesuai indikator penilaian: age, motorik kasar, motorik halus, komunikasi, ekspresif, menyimak, Kemampuan Pra Akademik, membaca, sosial skill, dan growth.</p></div>
+          <div class="note"><span class="tagp b">SI Pelatihan</span><p>Google Form punya 15 kolom. Dipilih <span class="hl">12 kolom</span> yang relevan untuk kebutuhan sistem pendataan peserta pelatihan.</p></div>
+        </div>
+        <div class="spanel" id="s2">
+          <div class="note"><span class="tagp a">SDKB</span><p>Dataset dikumpulkan dari Kaggle sebanyak <span class="hl">80.000 data</span>. Data testing berasal dari observasi langsung guru di lapangan: guru menginput hasil penilaian siswa ke sistem secara real-time.</p></div>
+          <div class="note"><span class="tagp b">SI Pelatihan</span><p>Data peserta dikumpulkan lewat Google Form, lalu diproses untuk diimport ke dalam sistem.</p></div>
+        </div>
+        <div class="spanel" id="s3">
+          <div class="note"><span class="tagp a">SDKB</span><p>Dataset Kaggle diintegrasikan dengan standar penilaian guru. Preprocessing meliputi normalisasi nilai dan penanganan missing value, lalu data dibagi menjadi data training & data testing.</p></div>
+          <div class="note"><span class="tagp b">SI Pelatihan</span><p>Nama kolom hasil Google Form disesuaikan melalui query SQL agar cocok dengan struktur tabel database sebelum import. Cleaning data nyata di lingkungan produksi.</p></div>
+        </div>
+        <div class="spanel" id="s4">
+          <div class="note"><span class="tagp a">SDKB</span><p>Data training melatih model Decision Tree CART. Data testing dari observasi guru dipakai untuk menguji model, lalu sistem otomatis mengklasifikasikan <span class="hl">Normal / Terlambat</span> pada 3 aspek: motorik, kognitif, dan bahasa.</p></div>
+        </div>
+        <div class="spanel" id="s5">
+          <div class="note"><span class="tagp a">SDKB</span><p>Hasil klasifikasi tampil di dashboard. Guru bisa langsung melihat siswa mana yang terdeteksi terlambat beserta aspeknya, sebagai dasar intervensi yang tepat.</p></div>
+          <div class="note"><span class="tagp c">DeCafe</span><p>Data transaksi penjualan divisualisasikan dalam bar chart interaktif yang menampilkan porsi penjualan per menu, sehingga pemilik cafe tahu produk terlaris dan bisa mengambil keputusan berbasis data.</p></div>
+        </div>
       </div>
-      <div class="hidden sm:block glow-line" style="width:200px;margin-bottom:28px"></div>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-      <!-- Presensi Face Recognition -->
-      <div class="project-card reveal md:col-span-2">
-        <div class="flex flex-col lg:flex-row">
-          <div class="lg:w-1/2 img-placeholder" style="aspect-ratio:auto;min-height:240px">
-              <img src="assets/img/Sistem Presensi Cafe.png" alt="DeCafe" style="width:100%;height:100%;object-fit:contain;object-position:center;background:#0b0c10;display:block"/>
-          </div>
-          <div class="p-7 lg:w-1/2 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-2 mb-3"><span class="featured-dot"></span><span class="font-mono text-xs" style="color:#00e5ff">Featured Project · Terbaru</span></div>
-              <h3 class="font-display font-bold text-white text-xl mb-3">Sistem Presensi Karyawan Cafe<br/><span style="color:#00e5ff">Face Recognition</span></h3>
-              <p class="text-sm leading-relaxed mb-5" style="color:#94a3b8">Sistem absensi karyawan cafe berbasis pengenalan wajah dengan mode kiosk & mobile, mendukung multi-cabang. Backend REST API Laravel 12 mengatur data karyawan, jadwal, dan rekap presensi; microservice Python FastAPI menangani proses deteksi & pengenalan wajah; frontend Next.js 14 tampil dengan motif kartu bergaya struk (receipt-style card UI).</p>
-              <div class="flex flex-wrap gap-2">
-                <span class="tech-tag">Laravel 12</span><span class="tech-tag">Next.js 14</span><span class="tech-tag">Python FastAPI</span><span class="tech-tag">Face Recognition</span><span class="tech-tag">REST API</span><span class="tech-tag">Multi-Branch</span>
-              </div>
+      <div class="cases">
+        <h3>Studi kasus</h3>
+        <div class="case-grid">
+          <article class="case">
+            <div class="thumb"><img src="assets/img/dataset skdb.png" alt="Dataset SKDB" loading="lazy" /></div>
+            <div class="cb">
+              <h4>Sistem Deteksi Keterlambatan Belajar Siswa</h4>
+              <p>Dataset Kaggle 80.000 data, 20 kolom, diseleksi menjadi 10 kolom, preprocessing & cleaning, split data training & testing, latih model Decision Tree CART, guru input observasi, lalu sistem mengklasifikasikan keterlambatan pada motorik, kognitif, dan bahasa.</p>
+              <ul class="checks">
+                <li>Seleksi 10 kolom relevan dari 20 kolom dataset Kaggle</li>
+                <li>Kumpulkan 80.000 data Kaggle + data observasi langsung guru di lapangan</li>
+                <li>Validasi model lewat data testing; 9 kolom sebagai fitur, growth sebagai label target</li>
+                <li>Preprocessing, train/test split, hingga dashboard klasifikasi sebagai acuan tindakan guru</li>
+              </ul>
+              <div class="pills"><span class="pill">Decision Tree CART</span><span class="pill">Data Training</span><span class="pill">Data Testing</span><span class="pill">Kaggle Dataset</span><span class="pill">PHP</span><span class="pill">MySQL</span></div>
             </div>
-            <span class="font-mono text-xs mt-6" style="color:#3d4451;font-style:italic">Personal Project · 2026</span>
-          </div>
-        </div>
-      </div>
+          </article>
 
-      <!-- Jagabisnis POS -->
-      <div class="project-card reveal md:col-span-2">
-        <div class="flex flex-col lg:flex-row">
-          <div class="lg:w-1/2 img-placeholder" style="aspect-ratio:auto;min-height:240px">
-              <img src="assets/img/Sistem Aplikasi POS.png" alt="DeCafe" style="width:100%;height:100%;object-fit:contain;object-position:center;background:#0b0c10;display:block"/>
-          </div>
-          <div class="p-7 lg:w-1/2 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-2 mb-3"><span class="featured-dot"></span><span class="font-mono text-xs" style="color:#00e5ff">Featured Project</span></div>
-              <h3 class="font-display font-bold text-white text-xl mb-3">Multi-Tenant SaaS POS<br/><span style="color:#00e5ff">KasirHub POS</span></h3>
-              <p class="text-sm leading-relaxed mb-5" style="color:#94a3b8">Aplikasi POS SaaS multi-tenant (Bisnis Kopi Nusantara) untuk banyak bisnis dalam satu platform. Fitur manajemen shift, export laporan Excel, kustomisasi struk, poin loyalitas, split bill, audit log, sistem kupon & subscription, serta integrasi payment gateway Midtrans di level platform maupun per-bisnis. Dilengkapi REST API mobile (Sanctum) untuk role kasir & admin.</p>
-              <div class="flex flex-wrap gap-2">
-                <span class="tech-tag">Laravel 12</span><span class="tech-tag">Alpine.js</span><span class="tech-tag">Tailwind CSS</span><span class="tech-tag">MySQL</span><span class="tech-tag">Midtrans</span><span class="tech-tag">Laravel Sanctum</span><span class="tech-tag">Multi-Tenant</span>
-              </div>
+          <article class="case">
+            <div class="thumb"><img src="assets/img/data peserta.png" alt="Data peserta pelatihan" loading="lazy" /></div>
+            <div class="cb">
+              <h4>Sistem Informasi Pelatihan</h4>
+              <p>Data peserta dari Google Form (15 kolom), diseleksi 12 kolom: email, NIK, nama lengkap, jenis kelamin, tempat lahir, tanggal lahir, pendidikan terakhir, NIK/No.KTP, alamat, asal kabupaten/kota, asal kecamatan, no HP aktif. Nama kolom GForm disesuaikan via query dengan kolom tabel database, lalu diimport ke sistem.</p>
+              <ul class="checks">
+                <li>Identifikasi 12 dari 15 kolom Google Form yang relevan untuk sistem</li>
+                <li>Rencanakan integrasi data Google Form ke tabel database dengan mapping kolom</li>
+                <li>Cleaning nama kolom melalui query SQL agar sesuai struktur tabel database</li>
+              </ul>
+              <div class="pills"><span class="pill">Data Cleaning</span><span class="pill">Import Data</span><span class="pill">SQL Query</span><span class="pill">Laravel</span><span class="pill">MySQL</span></div>
             </div>
-            <span class="font-mono text-xs mt-6" style="color:#3d4451;font-style:italic">Personal Project · 2025–2026</span>
-          </div>
-        </div>
-      </div>
+          </article>
 
-      <!-- SI Pelatihan -->
-      <div class="project-card reveal md:col-span-2">
-        <div class="flex flex-col lg:flex-row">
-          <div class="lg:w-1/2 img-placeholder" style="aspect-ratio:auto;min-height:240px">
-            <img src="assets/img/SI_pelatihan.png" alt="SI Pelatihan" style="width:100%;height:100%;object-fit:contain;object-position:center;background:#0b0c10;display:block"/>
-          </div>
-          <div class="p-7 lg:w-1/2 flex flex-col justify-between">
-            <div class="flex items-center gap-2 mb-2"><span class="font-mono text-xs" style="color:#7c3aed">Internship Project</span></div>
-            <h3 class="font-display font-bold text-white text-lg mb-2">Sistem Informasi Pelatihan</h3>
-            <p class="text-sm leading-relaxed mb-4" style="color:#94a3b8">Platform manajemen pelatihan di BPVP Banda Aceh. Data peserta dikumpulkan dari Google Form (15 kolom) → diseleksi 12 kolom → diimport ke sistem dengan proses data cleaning pada nama kolom.</p>
-            <div class="flex flex-wrap gap-2 mb-4"><span class="tech-tag">PHP</span><span class="tech-tag">Laravel</span><span class="tech-tag">MySQL</span><span class="tech-tag">Tailwind CSS</span><span class="tech-tag">REST API</span><span class="tech-tag">JavaScript</span></div>
-            <span class="font-mono text-xs" style="color:#3d4451;font-style:italic">MagangHub Kemnaker · 2025–2026</span>
-          </div>
-        </div>
-      </div>
-      
-      <!-- SDKB -->
-      <div class="project-card reveal">
-        <div class="img-placeholder" style="padding:0;overflow:hidden">
-          <img src="assets/img/SKDB.jpeg" alt="SDKB" style="width:100%;height:100%;object-fit:contain;object-position:center;background:#0b0c10;display:block"/>
-        </div>
-        <div class="p-6">
-          <h3 class="font-display font-bold text-white text-lg mb-2">Sistem Deteksi Keterlambatan Belajar Siswa</h3>
-          <p class="text-sm leading-relaxed mb-4" style="color:#94a3b8">
-            Sistem berbasis web untuk mendeteksi keterlambatan perkembangan belajar anak pada aspek
-            <span style="color:#e2e8f0">motorik, kognitif, dan bahasa</span> menggunakan algoritma
-            <span style="color:#00e5ff">Decision Tree CART</span>. Dataset dari Kaggle (80.000 data, 20 kolom) → diseleksi 10 kolom relevan → dilatih & diuji untuk klasifikasi otomatis.
-          </p>
-          <div class="flex flex-wrap gap-2 mb-4"><span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span class="tech-tag">Decision Tree CART</span><span class="tech-tag">Bootstrap5</span><span class="tech-tag">JavaScript</span></div>
-          <span class="font-mono text-xs" style="color:#3d4451;font-style:italic">Akademik · 2023–2024</span>
-        </div>
-      </div>
-
-      <!-- DeCafe -->
-      <div class="project-card reveal">
-          <div class="img-placeholder" style="padding:0;overflow:hidden">
-            <img src="assets/img/DeCafe.png" alt="DeCafe" style="width:100%;height:100%;object-fit:contain;object-position:center;background:#0b0c10;display:block"/>
-          </div>
-          <div class="p-6">
-            <div>
-              <div class="flex items-center gap-2 mb-3"><span class="featured-dot"></span><span class="font-mono text-xs" style="color:#00e5ff">Featured Project</span></div>
-              <h3 class="font-display font-bold text-white text-xl mb-3">Aplikasi Kasir Berbasis Web<br/><span style="color:#00e5ff">DeCafe</span></h3>
-              <p class="text-sm leading-relaxed mb-5" style="color:#94a3b8">Sistem point-of-sale (POS) berbasis web untuk manajemen transaksi kedai kopi. Mencakup manajemen menu, pencatatan pesanan, laporan penjualan harian, dan rekap transaksi secara real-time.</p>
-              <div class="flex flex-wrap gap-2">
-                <span class="tech-tag">PHP</span><span class="tech-tag">HTML</span><span class="tech-tag">CSS</span><span class="tech-tag">JavaScript</span><span class="tech-tag">MySQL</span><span class="tech-tag">Bootstrap</span>
-              </div>
+          <article class="case">
+            <div class="thumb"><img src="assets/img/visualisasi data.png" alt="Visualisasi data DeCafe" loading="lazy" /></div>
+            <div class="cb">
+              <h4>Aplikasi Kasir DeCafe</h4>
+              <p>Data transaksi penjualan divisualisasikan dalam bar chart interaktif yang menampilkan porsi penjualan per menu. Output BI ini membantu pemilik cafe mengidentifikasi produk terlaris dan mengambil keputusan bisnis berbasis data.</p>
+              <ul class="checks">
+                <li>Visualisasi data penjualan sebagai dasar keputusan bisnis pemilik cafe</li>
+                <li>Identifikasi tren & produk terlaris untuk keputusan bisnis</li>
+              </ul>
+              <div class="pills"><span class="pill">Business Intelligence</span><span class="pill">Chart.js</span><span class="pill">Sales Analysis</span><span class="pill">Dashboard</span></div>
             </div>
-            <span class="font-mono text-xs mt-6" style="color:#3d4451;font-style:italic">Akademik · 2024</span>
-          </div>
-        </div>
-
-      <!-- Kartu Ujian -->
-      <div class="project-card reveal">
-        <div class="img-placeholder" style="padding:0;overflow:hidden">
-          <img src="assets/img/kartu_ujian.png" alt="Kartu Ujian" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"/>
-        </div>
-        <div class="p-6">
-          <h3 class="font-display font-bold text-white text-lg mb-2">Aplikasi Kartu Ujian Berbasis Web</h3>
-          <p class="text-sm leading-relaxed mb-4" style="color:#94a3b8">Sistem pembuatan dan pengelolaan kartu ujian secara digital. Otomatisasi generate kartu ujian berdasarkan data peserta.</p>
-          <div class="flex flex-wrap gap-2 mb-4"><span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span class="tech-tag">HTML/CSS</span><span class="tech-tag">JavaScript</span></div>
-          <span class="font-mono text-xs" style="color:#3d4451;font-style:italic">Akademik · 2023</span>
-        </div>
-      </div>
-
-      <!-- Koperasi Syariah -->
-      <div class="project-card reveal" style="transition-delay:.1s">
-        <div class="img-placeholder" style="padding:0;overflow:hidden">
-          <img src="assets/img/web koperasi.jpeg" alt="Koperasi Syariah" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"/>
-        </div>
-        <div class="p-6">
-          <div class="flex items-center gap-2 mb-2"><div style="width:6px;height:6px;background:#7c3aed;border-radius:50%;box-shadow:0 0 6px #7c3aed"></div><span class="font-mono text-xs" style="color:#7c3aed">Internship Project</span></div>
-          <h3 class="font-display font-bold text-white text-lg mb-2">Sistem Koperasi Syariah Karyawan</h3>
-          <p class="text-sm leading-relaxed mb-4" style="color:#94a3b8">Manajemen koperasi syariah untuk karyawan BPR Syariah Hikmah Wakilah. Fitur simpan-pinjam, laporan keuangan, dan data anggota.</p>
-          <div class="flex flex-wrap gap-2 mb-4"><span class="tech-tag">PHP</span><span class="tech-tag">HTML</span><span class="tech-tag">CSS</span><span class="tech-tag">JavaScript</span><span class="tech-tag">MySQL</span><span class="tech-tag">Bootstrap</span></div>
-          <span class="font-mono text-xs" style="color:#3d4451;font-style:italic">Magang BPR Syariah Hikmah Wakilah · 2024</span>
+          </article>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- SKILLS -->
-<section id="skills" class="relative py-24 px-6" style="z-index:1">
-  <div class="max-w-5xl mx-auto">
-    <div class="flex items-end justify-between mb-14 reveal">
-      <div>
-        <span class="hero-num">/ 02</span>
-        <h2 class="font-display font-bold text-white mt-1" style="font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.02em">Tech Stack</h2>
+  <!-- STACK -->
+  <section id="stack" class="alt">
+    <div class="wrap">
+      <div class="sec-head"><h2>Tech stack</h2></div>
+
+      <div class="stack-grid">
+        <div class="stack-box"><h3>Web development</h3><div class="pills"><span class="pill">PHP</span><span class="pill">Laravel</span><span class="pill">JavaScript</span><span class="pill">TypeScript</span><span class="pill">Next.js</span><span class="pill">Python FastAPI</span><span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">REST API</span><span class="pill">Bootstrap</span><span class="pill">Tailwind CSS</span></div></div>
+        <div class="stack-box"><h3>Database</h3><div class="pills"><span class="pill">MySQL</span><span class="pill">HeidiSQL</span><span class="pill">PostgreSQL</span></div></div>
+        <div class="stack-box"><h3>IT support</h3><div class="pills"><span class="pill">Windows</span><span class="pill">Linux</span><span class="pill">Troubleshooting</span><span class="pill">Networking</span></div></div>
+        <div class="stack-box"><h3>Tools & otomasi</h3><div class="pills"><span class="pill">n8n</span><span class="pill">Git</span><span class="pill">VS Code</span><span class="pill">Laragon</span><span class="pill">Docker</span><span class="pill">Postman</span><span class="pill">MS Office</span><span class="pill">Figma</span></div></div>
       </div>
-      <div class="hidden sm:block glow-line" style="width:200px;margin-bottom:24px"></div>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 reveal">
-      <div class="p-5 rounded-xl" style="background:#181b24;border:1px solid #232737">
-        <div class="flex items-center gap-3 mb-4"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.15)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2"><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></svg></div><span class="font-display font-semibold text-sm text-white">Web Development</span></div>
-        <div class="flex flex-wrap gap-2"><span class="tech-tag">PHP</span><span class="tech-tag">Laravel</span><span class="tech-tag">JavaScript</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Next.js</span><span class="tech-tag">Python FastAPI</span><span class="tech-tag">HTML</span><span class="tech-tag">CSS</span><span class="tech-tag">REST API</span><span class="tech-tag">Bootstrap</span><span class="tech-tag">Tailwind CSS</span></div>
-      </div>
-      <div class="p-5 rounded-xl" style="background:#181b24;border:1px solid #232737">
-        <div class="flex items-center gap-3 mb-4"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.15)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div><span class="font-display font-semibold text-sm text-white">Database</span></div>
-        <div class="flex flex-wrap gap-2"><span class="tech-tag">MySQL</span><span class="tech-tag">HeidiSQL</span><span class="tech-tag">PostgreSQL</span></div>
-      </div>
-      <div class="p-5 rounded-xl" style="background:#181b24;border:1px solid #232737">
-        <div class="flex items-center gap-3 mb-4"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.15)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><span class="font-display font-semibold text-sm text-white">IT Support</span></div>
-        <div class="flex flex-wrap gap-2"><span class="tech-tag">Windows</span><span class="tech-tag">Linux</span><span class="tech-tag">Troubleshooting</span><span class="tech-tag">Networking</span></div>
-      </div>
-      <div class="p-5 rounded-xl" style="background:#181b24;border:1px solid #232737">
-        <div class="flex items-center gap-3 mb-4"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.15)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg></div><span class="font-display font-semibold text-sm text-white">Tools & Otomasi</span></div>
-        <div class="flex flex-wrap gap-2"><span class="tech-tag">n8n</span><span class="tech-tag">Git</span><span class="tech-tag">VS Code</span><span class="tech-tag">Laragon</span><span class="tech-tag">Docker</span><span class="tech-tag">Postman</span><span class="tech-tag">MS Office</span><span class="tech-tag">Figma</span></div>
-      </div>
-      <div class="p-5 rounded-xl sm:col-span-2" style="background:#181b24;border:1px solid #232737">
-        <div class="flex items-center gap-3 mb-4"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.15)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div><span class="font-display font-semibold text-sm text-white">Sertifikasi</span></div>
-        <div class="space-y-2">
-          <div class="flex items-center justify-between py-2 px-3 rounded-lg" style="background:rgba(255,255,255,.02)"><span class="text-sm" style="color:#e2e8f0">Web Developer — BNSP</span><span class="font-mono text-xs" style="color:#6b7280">Oktober 2025 – 2028</span></div>
-          <div class="flex items-center justify-between py-2 px-3 rounded-lg" style="background:rgba(255,255,255,.02)"><span class="text-sm" style="color:#e2e8f0">Data Analyst — BNSP</span><span class="font-mono text-xs" style="color:#00e5ff">Dalam Proses Penerbitan Sertifikat · 2026</span></div>
-          <div class="flex items-center justify-between py-2 px-3 rounded-lg" style="background:rgba(255,255,255,.02)"><span class="text-sm" style="color:#e2e8f0">Fullstack Developer — MagangHub Kemnaker</span><span class="font-mono text-xs" style="color:#6b7280">Juni 2026</span></div>
-          <div class="flex items-center justify-between py-2 px-3 rounded-lg" style="background:rgba(255,255,255,.02)"><span class="text-sm" style="color:#e2e8f0">Backend Development — MySkill</span><span class="font-mono text-xs" style="color:#6b7280">Maret 2026</span></div>
-          <div class="flex items-center justify-between py-2 px-3 rounded-lg" style="background:rgba(255,255,255,.02)"><span class="text-sm" style="color:#e2e8f0">AI & Automation with n8n — MySkill</span><span class="font-mono text-xs" style="color:#6b7280">Maret 2026</span></div>
+
+      <div class="certs">
+        <h3>Sertifikasi</h3>
+        <div class="cert-grid">
+          <div class="cert"><strong>Web Developer</strong><span>BNSP, Oktober 2025 – 2028</span></div>
+          <div class="cert"><strong>Data Analyst</strong><span>BNSP, 2026</span><span class="wait">sertifikat dalam proses penerbitan</span></div>
+          <div class="cert k2"><strong>Fullstack Developer</strong><span>MagangHub Kemnaker, Juni 2026</span></div>
+          <div class="cert k2"><strong>Backend Development</strong><span>MySkill, Maret 2026</span></div>
+          <div class="cert k2"><strong>AI & Automation with n8n</strong><span>MySkill, Maret 2026</span></div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- DATA ANALYST -->
-<section id="data-analyst" class="relative py-24 px-6" style="z-index:1">
-  <div class="max-w-5xl mx-auto">
-
-    <div class="flex items-end justify-between mb-10 reveal">
-      <div>
-        <span class="hero-num">/ 03</span>
-        <h2 class="font-display font-bold text-white mt-1" style="font-size:clamp(2rem,5vw,3rem);letter-spacing:-.02em">Data Analyst</h2>
-        <p style="color:#6b7280;font-size:.9rem;margin-top:6px">Penerapan analisis data pada sistem nyata yang telah dibangun</p>
-      </div>
-      <div class="hidden sm:block glow-line" style="width:200px;margin-bottom:28px"></div>
-    </div>
-
-    <!-- Intro banner -->
-    <div class="reveal mb-12 p-6 rounded-2xl flex flex-col sm:flex-row items-start gap-5" style="background:linear-gradient(135deg,rgba(0,229,255,.05) 0%,rgba(124,58,237,.07) 100%);border:1px solid rgba(0,229,255,.15)">
-      <div class="w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center" style="background:rgba(0,229,255,.1);border:1px solid rgba(0,229,255,.2)">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
-      </div>
-      <div class="flex-1">
-        <p class="font-display font-semibold text-white mb-1">Analisis Data Terintegrasi dalam Sistem Nyata</p>
-        <p class="text-sm leading-relaxed" style="color:#94a3b8">Setiap sistem yang dibangun tidak hanya berfungsi sebagai aplikasi web, tetapi juga menerapkan proses analisis data secara nyata — mulai dari identifikasi kebutuhan, pengumpulan, pembersihan, hingga visualisasi sebagai dasar pengambilan keputusan bisnis.</p>
-      </div>
-      <div class="flex-shrink-0"><span style="background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.25);color:#00e5ff;border-radius:9999px;padding:4px 14px;font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap">● BNSP Data Analyst</span></div>
-    </div>
-
-    <!-- PROSES DATA ANALYST -->
-    <div class="reveal mb-14">
-      <div class="mb-6">
-        <p class="font-display font-bold text-white text-lg mb-1">Proses Analisis Data</p>
-        <p class="text-sm" style="color:#6b7280">Diterapkan langsung pada projek nyata yang telah dibangun</p>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-
-        <div class="uk-card">
-          <div class="flex items-center gap-3 mb-2">
-            <div class="w-7 h-7 rounded-lg flex-shrink-0 flex items-center justify-center" style="background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.15)">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            </div>
-            <p class="font-display font-semibold text-white text-sm">Seleksi & Kebutuhan Data</p>
-          </div>
-          <p class="text-xs leading-relaxed mb-3" style="color:#94a3b8">
-            <span style="color:#e2e8f0">SDKB:</span> Dataset Kaggle memiliki 20 kolom — dianalisis relevansinya terhadap kebutuhan guru, kemudian dipilih <span style="color:#00e5ff">10 kolom</span> yang sesuai dengan indikator penilaian: age, motorik kasar, motorik halus, komunikasi, ekspresif, menyimak, Kemampuan Pra Akademik, membaca, sosial skill, dan growth.<br/><br/>
-            <span style="color:#e2e8f0">SI Pelatihan:</span> Google Form memiliki 15 kolom — dipilih <span style="color:#00e5ff">12 kolom</span> yang relevan untuk kebutuhan sistem pendataan peserta pelatihan.
-          </p>
-          <div class="flex gap-2 flex-wrap">
-            <span class="uk-badge" style="color:#00e5ff;border-color:rgba(0,229,255,.25);background:rgba(0,229,255,.06)">SDKB</span>
-            <span class="uk-badge" style="color:#7c3aed;border-color:rgba(124,58,237,.25);background:rgba(124,58,237,.06)">SI Pelatihan</span>
-          </div>
+  <!-- CONTACT -->
+  <section id="kontak">
+    <div class="wrap">
+      <div class="cta-panel">
+        <div style="position:relative">
+          <h2>Siap bergabung dengan tim Anda.</h2>
+          <p>Saya sedang mencari posisi Fullstack Developer, Web Developer, atau Data Analyst. Jika tim Anda butuh orang yang bisa membangun sistem sekaligus menganalisis datanya, hubungi saya lewat email atau WhatsApp.</p>
+          <p class="loc">Berbasis di Aceh Utara, Indonesia</p>
         </div>
-
-        <div class="uk-card">
-          <div class="flex items-center gap-3 mb-2">
-            <div class="w-7 h-7 rounded-lg flex-shrink-0 flex items-center justify-center" style="background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.15)">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17,8 12,3 7,8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-            </div>
-            <p class="font-display font-semibold text-white text-sm">Pengumpulan Data</p>
-          </div>
-          <p class="text-xs leading-relaxed mb-3" style="color:#94a3b8">
-            <span style="color:#e2e8f0">SDKB:</span> Dataset dikumpulkan dari Kaggle sebanyak <span style="color:#00e5ff">80.000 data</span>. Data testing dikumpulkan dari <span style="color:#00e5ff">observasi langsung guru</span> di lapangan — guru menginput hasil penilaian siswa ke sistem secara real-time.<br/><br/>
-            <span style="color:#e2e8f0">SI Pelatihan:</span> Data peserta dikumpulkan melalui Google Form kemudian diproses untuk diimport ke dalam sistem.
-          </p>
-          <div class="flex gap-2 flex-wrap">
-            <span class="uk-badge" style="color:#00e5ff;border-color:rgba(0,229,255,.25);background:rgba(0,229,255,.06)">SDKB</span>
-            <span class="uk-badge" style="color:#7c3aed;border-color:rgba(124,58,237,.25);background:rgba(124,58,237,.06)">SI Pelatihan</span>
-          </div>
+        <div class="links">
+          <button type="button" id="copyMail" data-mail="riski.sarma28@gmail.com">
+            <span><span class="k">Email</span><span class="v">riski.sarma28@gmail.com</span></span><span class="go" id="copyLabel">Salin</span>
+          </button>
+          <a href="tel:+6289516501019"><span><span class="k">WhatsApp / Phone</span><span class="v">+62 895 1650 1019</span></span><span class="go">Hubungi</span></a>
+          <a href="https://www.linkedin.com/in/riski-sarma-670746221/" target="_blank" rel="noopener"><span><span class="k">LinkedIn</span><span class="v">riski-sarma</span></span><span class="go">Buka</span></a>
         </div>
-
-        <div class="uk-card">
-          <div class="flex items-center gap-3 mb-2">
-            <div class="w-7 h-7 rounded-lg flex-shrink-0 flex items-center justify-center" style="background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.15)">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>
-            </div>
-            <p class="font-display font-semibold text-white text-sm">Integrasi & Pembersihan Data</p>
-          </div>
-          <p class="text-xs leading-relaxed mb-3" style="color:#94a3b8">
-            <span style="color:#e2e8f0">SDKB:</span> Dataset Kaggle diintegrasikan dengan standar penilaian guru. Preprocessing meliputi normalisasi nilai, penanganan missing value, lalu data dibagi menjadi <span style="color:#00e5ff">data training & data testing</span>.<br/><br/>
-            <span style="color:#e2e8f0">SI Pelatihan:</span> Nama kolom hasil Google Form disesuaikan melalui query SQL agar sesuai dengan struktur kolom tabel database sebelum proses import — cleaning data nyata di lingkungan produksi.
-          </p>
-          <div class="flex gap-2 flex-wrap">
-            <span class="uk-badge" style="color:#00e5ff;border-color:rgba(0,229,255,.25);background:rgba(0,229,255,.06)">SDKB</span>
-            <span class="uk-badge" style="color:#7c3aed;border-color:rgba(124,58,237,.25);background:rgba(124,58,237,.06)">SI Pelatihan</span>
-          </div>
-        </div>
-
-        <div class="uk-card">
-          <div class="flex items-center gap-3 mb-2">
-            <div class="w-7 h-7 rounded-lg flex-shrink-0 flex items-center justify-center" style="background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.15)">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-            </div>
-            <p class="font-display font-semibold text-white text-sm">Klasifikasi & Validasi Model</p>
-          </div>
-          <p class="text-xs leading-relaxed mb-3" style="color:#94a3b8">
-            <span style="color:#e2e8f0">SDKB:</span> Data training digunakan untuk melatih model <span style="color:#00e5ff">Decision Tree CART</span>. Data testing dari observasi guru digunakan untuk menguji model — sistem otomatis mengklasifikasikan tingkat keterlambatan siswa: <span style="color:#00e5ff">Normal / Terlambat</span> pada 3 aspek: motorik, kognitif, dan bahasa.
-          </p>
-          <div class="flex gap-2 flex-wrap">
-            <span class="uk-badge" style="color:#00e5ff;border-color:rgba(0,229,255,.25);background:rgba(0,229,255,.06)">SDKB</span>
-          </div>
-        </div>
-
-        <div class="uk-card sm:col-span-2">
-          <div class="flex items-center gap-3 mb-2">
-            <div class="w-7 h-7 rounded-lg flex-shrink-0 flex items-center justify-center" style="background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.15)">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
-            </div>
-            <p class="font-display font-semibold text-white text-sm">Visualisasi Data & Dashboard</p>
-          </div>
-          <p class="text-xs leading-relaxed mb-3" style="color:#94a3b8">
-            <span style="color:#e2e8f0">SDKB:</span> Hasil klasifikasi ditampilkan di dashboard sistem — guru dapat langsung melihat siswa mana yang terdeteksi mengalami keterlambatan beserta aspeknya sebagai dasar tindakan intervensi yang tepat.<br/><br/>
-            <span style="color:#e2e8f0">DeCafe:</span> Data transaksi penjualan divisualisasikan dalam <span style="color:#00e5ff">bar chart interaktif</span> — menampilkan porsi penjualan per menu sehingga pemilik cafe dapat mengidentifikasi produk terlaris dan mengambil keputusan bisnis berbasis data.
-          </p>
-          <div class="flex gap-2 flex-wrap">
-            <span class="uk-badge" style="color:#00e5ff;border-color:rgba(0,229,255,.25);background:rgba(0,229,255,.06)">SDKB</span>
-            <span class="uk-badge" style="color:#7c3aed;border-color:rgba(124,58,237,.25);background:rgba(124,58,237,.06)">DeCafe</span>
-          </div>
-        </div>
-
       </div>
     </div>
+  </section>
+</main>
 
-    <!-- PROJECT DETAIL CARDS -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-      <!-- SI Pelatihan Detail -->
-      <div class="project-card reveal md:col-span-2">
-        <div class="flex flex-col lg:flex-row">
-          <div class="overflow:hidden;min-height:220px" class="lg:w-1/2">
-            <img src="assets/img/data peserta.png" alt="SI Pelatihan" style="width:100%;height:100%;object-fit:contain;object-position:center;background:#0b0c10;display:block"/>
-          </div>
-          <div class="p-6">
-            <div class="flex items-center gap-2 mb-2"><div style="width:6px;height:6px;background:#7c3aed;border-radius:50%;box-shadow:0 0 6px #7c3aed"></div><span class="font-mono text-xs" style="color:#7c3aed">Data Analyst · Monitoring</span></div>
-            <h3 class="font-display font-bold text-white text-lg mb-2">Sistem Informasi Pelatihan</h3>
-            <p class="text-sm leading-relaxed mb-3" style="color:#94a3b8">
-              Data peserta dari <span style="color:#e2e8f0">Google Form (15 kolom)</span> → diseleksi <span style="color:#00e5ff">12 kolom</span>: email, NIK, nama lengkap, jenis kelamin, tempat lahir, tanggal lahir, pendidikan terakhir, NIK/No.KTP, alamat, asal kabupaten/kota, asal kecamatan, no HP aktif → nama kolom GForm <span style="color:#00e5ff">disesuaikan via query</span> dengan kolom tabel database → import ke sistem.
-            </p>
-            <div class="space-y-1.5 mb-4">
-              <div class="flex items-start gap-2"><svg class="flex-shrink-0 mt-0.5" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg><span class="text-xs" style="color:#94a3b8">Identifikasi 12 dari 15 kolom Google Form yang relevan untuk sistem</span></div>
-              <div class="flex items-start gap-2"><svg class="flex-shrink-0 mt-0.5" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg><span class="text-xs" style="color:#94a3b8">Rencanakan integrasi data Google Form ke tabel database dengan mapping kolom</span></div>
-              <div class="flex items-start gap-2"><svg class="flex-shrink-0 mt-0.5" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg><span class="text-xs" style="color:#94a3b8">Cleaning nama kolom melalui query SQL agar sesuai struktur tabel database</span></div>
-            </div>
-            <div class="flex flex-wrap gap-2"><span class="tech-tag">Data Cleaning</span><span class="tech-tag">Import Data</span><span class="tech-tag">SQL Query</span><span class="tech-tag">Laravel</span><span class="tech-tag">MySQL</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SDKB Detail -->
-      <div class="project-card reveal" style="transition-delay:.1s">
-          <div class="img-placeholder" style="padding:0;overflow:hidden">
-            <img src="assets/img/dataset skdb.png" alt="SKDB Dataset" style="width:100%;height:100%;object-fit:contain;object-position:center;background:#0b0c10;display:block"/>
-          </div>
-          <div class="p-6">
-            <div>
-              <div class="flex items-center gap-2 mb-3"><span class="featured-dot"></span><span class="font-mono text-xs" style="color:#00e5ff">Data Analyst · Featured</span></div>
-              <h3 class="font-display font-bold text-white text-xl mb-3">Sistem Deteksi Keterlambatan Belajar Siswa</h3>
-              <p class="text-sm leading-relaxed mb-4" style="color:#94a3b8">
-                Dataset Kaggle <span style="color:#e2e8f0">80.000 data, 20 kolom</span> → diseleksi menjadi <span style="color:#00e5ff">10 kolom</span> (age, motorik kasar, motorik halus, komunikasi, ekspresif, menyimak, Kemampuan Pra Akademik, membaca, sosial skill, growth) → preprocessing & cleaning → split <span style="color:#00e5ff">data training & testing</span> → latih model <span style="color:#00e5ff">Decision Tree CART</span> → guru input observasi → sistem otomatis klasifikasi keterlambatan pada 3 aspek: <span style="color:#e2e8f0">motorik, kognitif, bahasa</span>.
-              </p>
-              <div class="space-y-1.5 mb-4">
-                <div class="flex items-start gap-2"><svg class="flex-shrink-0 mt-0.5" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg><span class="text-xs" style="color:#94a3b8">Identifikasi & seleksi 10 kolom relevan dari 20 kolom dataset Kaggle</span></div>
-                <div class="flex items-start gap-2"><svg class="flex-shrink-0 mt-0.5" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg><span class="text-xs" style="color:#94a3b8">Kumpulkan 80.000 data Kaggle + data observasi langsung guru di lapangan</span></div>
-                <div class="flex items-start gap-2"><svg class="flex-shrink-0 mt-0.5" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg><span class="text-xs" style="color:#94a3b8">Validasi model melalui data testing; 9 kolom sebagai fitur, growth sebagai label target</span></div>
-                <div class="flex items-start gap-2"><svg class="flex-shrink-0 mt-0.5" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg><span class="text-xs" style="color:#94a3b8">Preprocessing, train/test split, hingga dashboard klasifikasi sebagai acuan tindakan guru</span></div>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <span class="tech-tag">Decision Tree CART</span><span class="tech-tag">Data Training</span><span class="tech-tag">Data Testing</span><span class="tech-tag">Kaggle Dataset</span><span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span>
-              </div>
-            </div>
-          </div>
-      </div>
-
-      
-
-      <!-- DeCafe BI -->
-      <div class="project-card reveal" style="transition-delay:.1s">
-        <div class="img-placeholder" style="padding:0;overflow:hidden">
-          <img src="assets/img/visualisasi data.png" alt="DeCafe BI" style="width:100%;height:100%;object-fit:contain;object-position:center;background:#0b0c10;display:block"/>
-        </div>
-        <div class="p-6">
-          <div class="flex items-center gap-2 mb-2"><div style="width:6px;height:6px;background:#00e5ff;border-radius:50%;box-shadow:0 0 6px #00e5ff"></div><span class="font-mono text-xs" style="color:#00e5ff">Data Analyst · Business Intelligence</span></div>
-          <h3 class="font-display font-bold text-white text-lg mb-2">Aplikasi Kasir DeCafe</h3>
-          <p class="text-sm leading-relaxed mb-3" style="color:#94a3b8">
-            Data transaksi penjualan divisualisasikan dalam <span style="color:#00e5ff">bar chart interaktif</span> menampilkan porsi penjualan per menu. Output BI ini membantu pemilik cafe mengidentifikasi produk terlaris dan mengambil keputusan bisnis berbasis data.
-          </p>
-          <div class="space-y-1.5 mb-4">
-            <div class="flex items-start gap-2"><svg class="flex-shrink-0 mt-0.5" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg><span class="text-xs" style="color:#94a3b8">Visualisasi data penjualan sebagai dasar keputusan bisnis pemilik cafe</span></div>
-            <div class="flex items-start gap-2"><svg class="flex-shrink-0 mt-0.5" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="2.5"><polyline points="20,6 9,17 4,12"/></svg><span class="text-xs" style="color:#94a3b8">Identifikasi tren & produk terlaris untuk keputusan bisnis</span></div>
-          </div>
-          <div class="flex flex-wrap gap-2"><span class="tech-tag">Business Intelligence</span><span class="tech-tag">Chart.js</span><span class="tech-tag">Sales Analysis</span><span class="tech-tag">Dashboard</span></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="relative py-24 px-6" style="z-index:1">
-  <div class="max-w-3xl mx-auto text-center reveal">
-    <span class="hero-num">/ 04</span>
-    <h2 class="font-display font-bold text-white mt-2 mb-4" style="font-size:clamp(1.8rem,5vw,3rem);letter-spacing:-.02em">Mari Berkolaborasi</h2>
-    <p class="text-base leading-relaxed mb-10 max-w-lg mx-auto" style="color:#94a3b8">Terbuka untuk peluang kerja, freelance, maupun diskusi seputar project. Jangan ragu untuk menghubungi!</p>
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
-      <a href="mailto:riski.sarma28@gmail.com" class="flex flex-col items-center gap-3 p-5 rounded-xl transition-all duration-300" style="background:#181b24;border:1px solid #232737" onmouseover="this.style.borderColor='rgba(0,229,255,.3)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#232737';this.style.transform=''">
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(0,229,255,.08)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-        <div><p class="font-mono text-xs mb-1" style="color:#6b7280">Email</p><p class="text-sm font-medium" style="color:#e2e8f0">riski.sarma28@gmail.com</p></div>
-      </a>
-      <a href="tel:+6289516501019" class="flex flex-col items-center gap-3 p-5 rounded-xl transition-all duration-300" style="background:#181b24;border:1px solid #232737" onmouseover="this.style.borderColor='rgba(0,229,255,.3)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#232737';this.style.transform=''">
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(0,229,255,.08)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00e5ff" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 0110 3.18 2 2 0 0112 5.09 2 2 0 0114.09 7 2 2 0 0116 8.91v.08a.5.5 0 00.5.5h4.36A2 2 0 0123 11.5v3.42a2 2 0 01-1 1z"/></svg></div>
-        <div><p class="font-mono text-xs mb-1" style="color:#6b7280">WhatsApp / Phone</p><p class="text-sm font-medium" style="color:#e2e8f0">+62 895 1650 1019</p></div>
-      </a>
-      <a href="https://www.linkedin.com/in/riski-sarma-670746221/" target="_blank" rel="noopener" class="flex flex-col items-center gap-3 p-5 rounded-xl transition-all duration-300" style="background:#181b24;border:1px solid #232737" onmouseover="this.style.borderColor='rgba(0,229,255,.3)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#232737';this.style.transform=''">
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(0,229,255,.08)"><svg width="18" height="18" viewBox="0 0 24 24" fill="#00e5ff"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></div>
-        <div><p class="font-mono text-xs mb-1" style="color:#6b7280">LinkedIn</p><p class="text-sm font-medium" style="color:#e2e8f0">riski-sarma</p></div>
-      </a>
-    </div>
-    <div class="inline-flex items-center gap-2 font-mono text-xs" style="color:#4b5563">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
-      Aceh Utara, Indonesia
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="relative py-8 px-6" style="z-index:1;border-top:1px solid #232737">
-  <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-    <span class="font-display font-bold text-sm" style="color:#3d4451">rss<span style="color:#00e5ff">.</span>dev</span>
-    <span class="font-mono text-xs" style="color:#3d4451">© 2026 Rizki Saputra Sarma</span>
-    <a href="https://portolio-sarma.my.canva.site/" target="_blank" rel="noopener" class="font-mono text-xs transition-colors" style="color:#4b5563" onmouseover="this.style.color='#00e5ff'" onmouseout="this.style.color='#4b5563'">Canva Portfolio →</a>
+<footer>
+  <div class="wrap">
+    <span>© 2026 Rizki Saputra Sarma</span>
+    <span><a href="https://www.karyalokal.com" target="_blank" rel="noopener">karyalokal.com</a>
   </div>
 </footer>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+<!-- Modal detail projek -->
+<dialog id="modal" aria-label="Detail projek">
+  <button class="m-close" id="mClose" aria-label="Tutup">✕</button>
+  <div class="m-img" id="mImg"><img id="mPic" src="" alt="" /></div>
+  <div class="m-body">
+    <span class="kicker" id="mKick"></span>
+    <h3 id="mTitle"></h3>
+    <p id="mDesc"></p>
+    <div class="pills" id="mPills"></div>
+  </div>
+  <div class="m-nav">
+    <button type="button" id="mPrev">Sebelumnya</button>
+    <span style="color:var(--mute);font-size:.84rem" id="mCount"></span>
+    <button type="button" id="mNext">Berikutnya</button>
+  </div>
+</dialog>
 
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-link');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => { if(window.scrollY >= s.offsetTop - 80) current = s.id; });
-    navLinks.forEach(link => { link.style.color = link.getAttribute('href') === '#'+current ? '#00e5ff' : ''; });
+<script>
+  /* ===== Progress scroll & nav aktif ===== */
+  const prog = document.getElementById('progress');
+  const links = [...document.querySelectorAll('.bar nav a')];
+  const secs = links.map(a => document.querySelector(a.getAttribute('href')));
+  function onScroll() {
+    const h = document.documentElement.scrollHeight - innerHeight;
+    prog.style.transform = 'scaleX(' + (h > 0 ? Math.min(1, scrollY / h) : 0) + ')';
+    let cur = -1;
+    secs.forEach((s, i) => { if (s && scrollY >= s.offsetTop - 140) cur = i; });
+    links.forEach((a, i) => a.classList.toggle('on', i === cur));
+  }
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ===== Modal projek ===== */
+  const cards = [...document.querySelectorAll('.pcard')];
+  const modal = document.getElementById('modal');
+  const mImg = document.getElementById('mImg'), mPic = document.getElementById('mPic');
+  const mKick = document.getElementById('mKick'), mTitle = document.getElementById('mTitle');
+  const mDesc = document.getElementById('mDesc'), mPills = document.getElementById('mPills'), mCount = document.getElementById('mCount');
+  let idx = 0;
+  function openAt(i) {
+    idx = (i + cards.length) % cards.length;
+    const c = cards[idx];
+    const img = c.querySelector('.thumb img');
+    mPic.src = img.getAttribute('src'); mPic.alt = img.alt;
+    mImg.classList.toggle('top', c.dataset.top === '1');
+    mKick.textContent = c.querySelector('.ptop span').textContent + ', ' + c.querySelector('.ptop em').textContent;
+    mTitle.textContent = c.querySelector('h3').textContent;
+    mDesc.textContent = c.querySelector('.full p').textContent;
+    mPills.innerHTML = c.querySelector('.full .pills').innerHTML;
+    mCount.textContent = (idx + 1) + ' dari ' + cards.length;
+    if (!modal.open) { modal.showModal(); document.body.classList.add('lock'); }
+  }
+  cards.forEach((c, i) => c.addEventListener('click', () => openAt(i)));
+  document.getElementById('mPrev').addEventListener('click', () => openAt(idx - 1));
+  document.getElementById('mNext').addEventListener('click', () => openAt(idx + 1));
+  document.getElementById('mClose').addEventListener('click', () => modal.close());
+  modal.addEventListener('close', () => document.body.classList.remove('lock'));
+  modal.addEventListener('click', e => { if (e.target === modal) modal.close(); });
+  modal.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') openAt(idx + 1);
+    if (e.key === 'ArrowLeft') openAt(idx - 1);
   });
 
-  const twEl = document.getElementById('typewriter');
-  const phrases = ['Fullstack Developer','Web Developer','Laravel Enthusiast','Data Analyst','IT Support'];
-  let pIdx=0, cIdx=0, deleting=false;
-  function type() {
-    const cur = phrases[pIdx];
-    if(!deleting) {
-      twEl.textContent = cur.slice(0,++cIdx);
-      if(cIdx===cur.length){ setTimeout(()=>{deleting=true;type();},1800); return; }
-      setTimeout(type,75);
-    } else {
-      twEl.textContent = cur.slice(0,--cIdx);
-      if(cIdx===0){ deleting=false; pIdx=(pIdx+1)%phrases.length; setTimeout(type,400); return; }
-      setTimeout(type,40);
+  /* ===== Stepper analisis data ===== */
+  const steps = document.querySelectorAll('.step');
+  steps.forEach(s => s.addEventListener('click', () => {
+    const si = [...steps].indexOf(s); steps.forEach((x, xi) => { x.classList.toggle('on', x === s); x.classList.toggle('done', xi < si); x.setAttribute('aria-selected', x === s ? 'true' : 'false'); });
+    document.querySelectorAll('.spanel').forEach(p => p.classList.toggle('on', p.id === s.dataset.step));
+  }));
+
+  /* ===== Salin email ===== */
+  const copyBtn = document.getElementById('copyMail');
+  const copyLabel = document.getElementById('copyLabel');
+  copyBtn.addEventListener('click', async () => {
+    const mail = copyBtn.dataset.mail;
+    try { await navigator.clipboard.writeText(mail); copyLabel.textContent = 'Tersalin'; }
+    catch (e) { location.href = 'mailto:' + mail; }
+    setTimeout(() => copyLabel.textContent = 'Salin', 1800);
+  });
+
+  /* ===== Animasi halaman ===== */
+  (function () {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    /* muncul saat di-scroll, bertahap per baris */
+    const mark = (sel, cls) => document.querySelectorAll(sel).forEach(el => {
+      const idx = [...el.parentElement.children].indexOf(el);
+      el.classList.add('rv'); if (cls) el.classList.add(cls);
+      el.style.setProperty('--d', ((idx % 3) * 0.1) + 's');
+    });
+    mark('.sec-head'); mark('.stepper'); mark('.cases > h3'); mark('.certs > h3');
+    mark('.pcard', 'zoom'); mark('.case', 'zoom'); mark('.stack-box', 'zoom'); mark('.cert', 'zoom');
+    mark('.cta-panel', 'zoom'); mark('.links > *', 'left');
+    mark('.brand-panel', 'zoom'); mark('.svc', 'zoom'); mark('.kcard', 'zoom'); mark('.site-shot', 'zoom');
+    document.querySelectorAll('.stack-box').forEach(b => b.querySelectorAll('.pill').forEach((p, i) => p.style.setProperty('--pi', i)));
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+    /* teks peran di hero diketik bergantian */
+    const rt = document.getElementById('roleText');
+    const roles = ['Fullstack Developer', 'Web Developer', 'Data Analyst', 'Laravel Enthusiast', 'IT Support'];
+    if (reduce) { rt.textContent = roles[0]; }
+    else {
+      let p = 0, c = 0, del = false;
+      (function tick() {
+        const cur = roles[p];
+        if (!del) {
+          rt.textContent = cur.slice(0, ++c);
+          if (c === cur.length) { del = true; return setTimeout(tick, 1700); }
+          setTimeout(tick, 70);
+        } else {
+          rt.textContent = cur.slice(0, --c);
+          if (c === 0) { del = false; p = (p + 1) % roles.length; return setTimeout(tick, 350); }
+          setTimeout(tick, 38);
+        }
+      })();
     }
-  }
-  setTimeout(type,900);
+
+    /* sorotan mengikuti kursor di kartu */
+    document.querySelectorAll('.pcard, .stack-box, .note, .case').forEach(el => {
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect();
+        el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    });
+
+    /* tombol magnetik + kartu projek miring (hanya mouse) */
+    if (fine && !reduce) {
+      document.querySelectorAll('.btn, .nav-cta').forEach(b => {
+        b.addEventListener('pointermove', e => {
+          const r = b.getBoundingClientRect();
+          const x = e.clientX - (r.left + r.width / 2), y = e.clientY - (r.top + r.height / 2);
+          b.style.transform = 'translate(' + (x * 0.22).toFixed(1) + 'px,' + (y * 0.3).toFixed(1) + 'px)';
+        });
+        b.addEventListener('pointerleave', () => { b.style.transform = ''; });
+      });
+      document.querySelectorAll('.pcard').forEach(c => {
+        c.addEventListener('pointermove', e => {
+          const r = c.getBoundingClientRect();
+          const px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+          c.style.transform = 'perspective(900px) rotateX(' + ((0.5 - py) * 6).toFixed(2) + 'deg) rotateY(' + ((px - 0.5) * 8).toFixed(2) + 'deg) translateY(-5px)';
+        });
+        c.addEventListener('pointerleave', () => { c.style.transform = ''; });
+      });
+    }
+
+    /* navbar sembunyi saat scroll turun, muncul lagi saat naik */
+    const bar = document.querySelector('.bar');
+    let ly = scrollY;
+    addEventListener('scroll', () => {
+      const y = scrollY;
+      if (y > 260 && y > ly + 6) bar.classList.add('hide');
+      else if (y < ly - 6 || y <= 260) bar.classList.remove('hide');
+      ly = y;
+    }, { passive: true });
+  })();
+
+  /* ===== Screenshot website KARYALOKAL (tampil kalau file ada) ===== */
+  (function () {
+    const shot = document.getElementById('siteShot'), img = document.getElementById('siteImg');
+    const probe = new Image();
+    probe.onload = () => { img.src = probe.src; shot.hidden = false; };
+    probe.src = 'assets/img/karyalokal.png';
+  })();
+
+  /* ===== Fallback foto ===== */
+  const foto = document.getElementById('foto');
+  const photo = document.getElementById('photo');
+  foto.addEventListener('error', () => photo.classList.add('empty'));
+  if (foto.complete && foto.naturalWidth === 0) photo.classList.add('empty');
+
+  /* ===== Lanyard kantoran: strap pipih bertulisan + kait logam + kartu ID, fisika verlet ===== */
+  (function () {
+    const box = document.getElementById('lanyard');
+    const cv = document.getElementById('strap');
+    const card = document.getElementById('idcard');
+    const ctx = cv.getContext('2d');
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const N = 10;                           // segmen tali
+    const GRAV = 0.5, DAMP = 0.992, ITER = 16;
+    const STRAP_W = 26, HOOK = 30;
+    const LABEL = '   RIZKI SAPUTRA SARMA   /   FULLSTACK DEVELOPER   /   DATA ANALYST   /   ';
+    let W = 0, H = 0, dpr = 1, cardW = 0, cardH = 0, segLen = 0, rodLen = 0;
+    let pts = [], adv = [], drag = null, running = false, visible = true, last = 0, acc = 0;
+
+    const P = (x, y, inv) => ({ x, y, px: x, py: y, inv });
+    // indeks: 0 jangkar, 1..N tali (N = ujung strap/crimp), N+1 atas kartu, N+2 bawah kartu
+    const A = () => pts[N + 1], B = () => pts[N + 2];
+
+    function measure() {
+      ctx.font = '800 9.5px "Plus Jakarta Sans", sans-serif';
+      adv = [...LABEL].map(ch => (ch === ' ' ? 4.2 : ctx.measureText(ch).width + 1.5));
+    }
+
+    function setup() {
+      const r = box.getBoundingClientRect();
+      W = r.width; H = r.height;
+      dpr = Math.min(devicePixelRatio || 1, 2);
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+      cardW = card.offsetWidth; cardH = card.offsetHeight;
+      const rope = Math.max(120, Math.min(250, H - cardH - HOOK - 44));
+      segLen = rope / N;
+      rodLen = cardH * 0.8;
+      measure();
+
+      const ax = W / 2, ay = -10;
+      pts = [P(ax, ay, 0)];
+      for (let i = 1; i <= N; i++) pts.push(P(ax, ay + segLen * i, i === N ? 0.6 : 1));
+      pts.push(P(ax, ay + segLen * N + HOOK, 0.3));
+      pts.push(P(ax, ay + segLen * N + HOOK + rodLen, 0.2));
+
+      if (reduce) { for (let k = 0; k < 140; k++) step(); }
+      else { B().x += 70; }                  // dorongan awal supaya berayun
+      render();
+      card.classList.add('ready');
+    }
+
+    function constrain(a, b, len) {
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const d = Math.hypot(dx, dy) || 0.0001;
+      const diff = (d - len) / d;
+      const w = a.inv + b.inv;
+      if (!w) return;
+      const ka = a.inv / w, kb = b.inv / w;
+      a.x += dx * diff * ka; a.y += dy * diff * ka;
+      b.x -= dx * diff * kb; b.y -= dy * diff * kb;
+    }
+
+    function step() {
+      for (let i = 1; i < pts.length; i++) {
+        const p = pts[i];
+        const vx = (p.x - p.px) * DAMP, vy = (p.y - p.py) * DAMP;
+        p.px = p.x; p.py = p.y;
+        p.x += vx; p.y += vy + GRAV;
+      }
+      if (drag) {
+        const a = A(), b = B();
+        const gx = a.x + (b.x - a.x) * drag.t, gy = a.y + (b.y - a.y) * drag.t;
+        const dx = drag.x - gx, dy = drag.y - gy;
+        a.x += dx * (1 - drag.t) * 0.4; a.y += dy * (1 - drag.t) * 0.4;
+        b.x += dx * drag.t * 0.4;       b.y += dy * drag.t * 0.4;
+        [a, b].forEach(p => { p.px += (p.x - p.px) * 0.25; p.py += (p.y - p.py) * 0.25; });
+      }
+      for (let k = 0; k < ITER; k++) {
+        for (let i = 0; i < N; i++) constrain(pts[i], pts[i + 1], segLen);
+        constrain(pts[N], pts[N + 1], HOOK);
+        constrain(pts[N + 1], pts[N + 2], rodLen);
+      }
+      for (let i = 1; i < pts.length; i++) {
+        const p = pts[i];
+        if (p.x < -W * 0.7) p.x = -W * 0.7;
+        if (p.x > W * 1.7) p.x = W * 1.7;
+        if (p.y > H + 400) p.y = H + 400;
+      }
+    }
+
+    /* titik rapat sepanjang kurva strap, supaya teks bisa mengikuti lengkungan */
+    function polyline() {
+      const poly = [{ x: pts[0].x, y: pts[0].y }];
+      let sx = pts[0].x, sy = pts[0].y;
+      for (let i = 1; i < N; i++) {
+        const cx = pts[i].x, cy = pts[i].y;
+        const ex = (pts[i].x + pts[i + 1].x) / 2, ey = (pts[i].y + pts[i + 1].y) / 2;
+        for (let t = 1; t <= 6; t++) {
+          const u = t / 6, v = 1 - u;
+          poly.push({ x: v * v * sx + 2 * v * u * cx + u * u * ex, y: v * v * sy + 2 * v * u * cy + u * u * ey });
+        }
+        sx = ex; sy = ey;
+      }
+      for (let t = 1; t <= 3; t++) {
+        const u = t / 3;
+        poly.push({ x: sx + (pts[N].x - sx) * u, y: sy + (pts[N].y - sy) * u });
+      }
+      return poly;
+    }
+
+    function drawStrap(poly) {
+      const trace = () => { ctx.beginPath(); ctx.moveTo(poly[0].x, poly[0].y); for (let i = 1; i < poly.length; i++) ctx.lineTo(poly[i].x, poly[i].y); };
+      ctx.lineCap = 'butt'; ctx.lineJoin = 'round';
+      trace(); ctx.strokeStyle = '#b97a00'; ctx.lineWidth = STRAP_W + 3; ctx.stroke();      // tepi
+      trace(); ctx.strokeStyle = '#ffb224'; ctx.lineWidth = STRAP_W; ctx.stroke();          // badan strap
+      trace(); ctx.strokeStyle = 'rgba(255,255,255,.18)'; ctx.lineWidth = 3; ctx.setLineDash([]); ctx.stroke(); // kilap tengah
+
+      // teks cetak sepanjang strap
+      const cum = [0];
+      for (let i = 1; i < poly.length; i++) cum.push(cum[i - 1] + Math.hypot(poly[i].x - poly[i - 1].x, poly[i].y - poly[i - 1].y));
+      const total = cum[cum.length - 1];
+      ctx.font = '800 9.5px "Plus Jakarta Sans", sans-serif';
+      ctx.fillStyle = 'rgba(52,32,0,.82)'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      let s = 8, ci = 0, seg = 1;
+      while (s < total - 6 && adv.length) {
+        const k = ci % LABEL.length, a = adv[k], sc = s + a / 2;
+        while (seg < poly.length - 1 && cum[seg] < sc) seg++;
+        const p0 = poly[seg - 1], p1 = poly[seg];
+        const sl = cum[seg] - cum[seg - 1] || 1, tt = (sc - cum[seg - 1]) / sl;
+        const x = p0.x + (p1.x - p0.x) * tt, y = p0.y + (p1.y - p0.y) * tt;
+        const ang = Math.atan2(p1.y - p0.y, p1.x - p0.x);
+        const ch = LABEL[k];
+        if (ch !== ' ') { ctx.save(); ctx.translate(x, y); ctx.rotate(ang); ctx.fillText(ch, 0, 0); ctx.restore(); }
+        s += a; ci++;
+      }
+    }
+
+    function drawHardware() {
+      // crimp logam di ujung strap
+      const e = pts[N], pr = pts[N - 1];
+      const ang = Math.atan2(e.y - pr.y, e.x - pr.x);
+      ctx.save();
+      ctx.translate(e.x, e.y); ctx.rotate(ang);
+      const g = ctx.createLinearGradient(0, -16, 0, 16);
+      g.addColorStop(0, '#f1f4f3'); g.addColorStop(.5, '#aab5b2'); g.addColorStop(1, '#6f7b78');
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.roundRect(-9, -(STRAP_W / 2 + 4), 15, STRAP_W + 8, 3); ctx.fill();
+      ctx.fillStyle = 'rgba(0,0,0,.25)'; ctx.fillRect(-4, -(STRAP_W / 2 + 1), 2, STRAP_W + 2);
+      ctx.restore();
+      // kait/swivel dari crimp ke kartu
+      const a = A();
+      ctx.lineCap = 'round';
+      ctx.strokeStyle = '#8d9895'; ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(e.x, e.y); ctx.lineTo(a.x, a.y); ctx.stroke();
+      ctx.strokeStyle = '#d6dedc'; ctx.lineWidth = 2.6; ctx.beginPath(); ctx.moveTo(e.x, e.y); ctx.lineTo(a.x, a.y); ctx.stroke();
+      const mx = (e.x + a.x) / 2, my = (e.y + a.y) / 2;
+      ctx.fillStyle = '#c3ccca'; ctx.strokeStyle = '#6f7b78'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(mx, my, 4.5, 0, 6.2832); ctx.fill(); ctx.stroke();
+    }
+
+    function render() {
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, W, H);
+      drawStrap(polyline());
+      drawHardware();
+      const a = A(), b = B();
+      const ang = Math.atan2(-(b.x - a.x), (b.y - a.y));
+      card.style.transform = 'translate(' + (a.x - cardW / 2).toFixed(2) + 'px,' + a.y.toFixed(2) + 'px) rotate(' + ang.toFixed(4) + 'rad)';
+      card.style.setProperty('--sx', (50 + ang * 90).toFixed(1) + '%');
+    }
+
+    function loop(t) {
+      if (!running) return;
+      const dt = Math.min(0.05, (t - last) / 1000 || 0.016);
+      last = t; acc += dt;
+      let n = 0;
+      while (acc >= 1 / 60 && n < 3) { step(); acc -= 1 / 60; n++; }
+      render();
+      requestAnimationFrame(loop);
+    }
+    function start() { if (running || reduce || !visible || !pts.length) return; running = true; last = performance.now(); acc = 0; requestAnimationFrame(loop); }
+    function stop() { running = false; }
+
+    const local = e => { const r = box.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; };
+    card.addEventListener('pointerdown', e => {
+      if (reduce) return;
+      card.setPointerCapture(e.pointerId);
+      const g = local(e), a = A(), b = B();
+      const vx = b.x - a.x, vy = b.y - a.y;
+      let t = ((g.x - a.x) * vx + (g.y - a.y) * vy) / (vx * vx + vy * vy);
+      t = Math.max(0.3, Math.min(1, t));
+      drag = { t, x: g.x, y: g.y };
+      card.classList.add('grab'); box.classList.add('moved');
+      start();
+    });
+    card.addEventListener('pointermove', e => { if (drag) { const g = local(e); drag.x = g.x; drag.y = g.y; } });
+    const release = () => { drag = null; card.classList.remove('grab'); };
+    card.addEventListener('pointerup', release);
+    card.addEventListener('pointercancel', release);
+
+    new IntersectionObserver(es => { visible = es[0].isIntersecting; visible ? start() : stop(); }).observe(box);
+
+    let rz;
+    addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { setup(); }, 150); });
+
+    const init = () => { setup(); start(); };
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(init); else addEventListener('load', init);
+  })();
 </script>
 </body>
 </html>
